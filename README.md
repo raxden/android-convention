@@ -26,3 +26,8 @@ Modules can then pick and choose the configurations they need.
 If there is one-off logic for a module without shared code, it's preferable to define that directly
 in the module's `build.gradle`, as opposed to creating a convention plugin with module-specific
 setup.
+
+```
+git submodule add git@github.com:raxden/android-convention.git
+git mv android-convention build-logic
+```
