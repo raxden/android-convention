@@ -16,6 +16,7 @@
 
 plugins {
     `kotlin-dsl`
+    `kotlin-dsl-precompiled-script-plugins`
 }
 
 group = "com.raxdenstudios.build-logic.convention"
