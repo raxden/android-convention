@@ -1,7 +1,6 @@
 import extension.androidConfig
 import extension.proguardConfig
 import extension.testsConfig
-import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kotlin
 
 plugins {
     id("com.android.library")

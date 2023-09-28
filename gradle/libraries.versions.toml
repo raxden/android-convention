@@ -48,7 +48,7 @@ commons-threeten = "4.43.0"
 commons-threeten-test = "4.42.0"
 compose = "2023.05.01"
 compose-compiler = "1.4.0"
-coroutines-bom = "1.6.4"
+coroutines = "1.7.3"
 espresso = "3.5.1"
 detekt = "1.22.0"
 firebase = "32.0.0"
@@ -144,9 +144,8 @@ commons-rx-test = { module = "com.raxdenstudios:commons-rx-test", version.ref = 
 commons-threeten = { module = "com.raxdenstudios:commons-threeten", version.ref = "commons-threeten" }
 commons-threeten-test = { module = "com.raxdenstudios:commons-threeten-test", version.ref = "commons-threeten-test" }
 
-coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version.ref = "coroutines-bom" }
-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android" }
-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
@@ -290,7 +289,6 @@ rx = [
 ]
 coroutines = [
     "commons-coroutines",
-    "coroutines-bom",
     "coroutines-android",
 ]
 threetenabp = [
@@ -320,7 +318,6 @@ test-rx = [
 ]
 test-coroutines = [
     "commons-coroutines-test",
-    "coroutines-bom",
     "coroutines-test",
     "turbine",
 ]
