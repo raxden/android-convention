@@ -1,5 +1,6 @@
 package extension
 
+import AppConfig
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
@@ -11,11 +12,11 @@ fun BaseAppModuleExtension.androidConfig(
 ) {
     val catalog = project.libs
 
-    compileSdk = catalog.versions_compileSDK
+    compileSdk = AppConfig.compileSdk
 
     compileOptions {
-        sourceCompatibility = catalog.versions_sourceCompatibility
-        targetCompatibility = catalog.versions_targetCompatibility
+        sourceCompatibility = AppConfig.sourceCompatibility
+        targetCompatibility = AppConfig.targetCompatibility
     }
 
     signingConfigs {
@@ -36,11 +37,10 @@ fun BaseAppModuleExtension.androidConfig(
     }
 
     defaultConfig {
-        minSdk = catalog.versions_minSDK
-        targetSdk = catalog.versions_targetSDK
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
 
-        // apk name, is posible to add variables as version, date...
-        project.setProperty("archivesBaseName", "mmdb")
+        testInstrumentationRunner = AppConfig.testInstrumentationRunner
     }
 
     buildTypes {
@@ -78,16 +78,16 @@ fun LibraryExtension.androidConfig(
 ) {
     val catalog = project.libs
 
-    compileSdk = catalog.versions_compileSDK
+    compileSdk = AppConfig.compileSdk
 
     compileOptions {
-        sourceCompatibility = catalog.versions_sourceCompatibility
-        targetCompatibility = catalog.versions_targetCompatibility
+        sourceCompatibility = AppConfig.sourceCompatibility
+        targetCompatibility = AppConfig.targetCompatibility
     }
 
     defaultConfig {
-        minSdk = catalog.versions_minSDK
-        targetSdk = catalog.versions_targetSDK // needed for instrumental tests
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk // needed for instrumental tests
     }
 
     packagingOptions {

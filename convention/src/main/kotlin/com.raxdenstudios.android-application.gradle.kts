@@ -1,10 +1,7 @@
-
 import extension.androidConfig
 import extension.composeConfig
-import extension.libs
 import extension.proguardConfig
 import extension.testsConfig
-import extension.version_jdk
 
 plugins {
     id("com.android.application")
@@ -21,11 +18,11 @@ android {
     composeConfig(project)
 
     kotlin {
-        jvmToolchain(project.libs.version_jdk.asInt())
+        jvmToolchain(AppConfig.javaLanguageVersion.asInt())
     }
 
     kotlinOptions {
-        jvmTarget = project.libs.version_jdk.toString()
+        jvmTarget = AppConfig.javaLanguageVersion.toString()
     }
 
     // Allow references to generated code -> https://developer.android.com/training/dependency-injection/hilt-android#kts
