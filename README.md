@@ -27,7 +27,23 @@ If there is one-off logic for a module without shared code, it's preferable to d
 in the module's `build.gradle`, as opposed to creating a convention plugin with module-specific
 setup.
 
+## Basic setup
+
+1. Navigate to Your Project's Root Directory
+2. Add the Repository as a Submodule:
+
 ```
 git submodule add git@github.com:raxden/android-convention.git
 git mv android-convention build-logic
+```
+
+3. Modify your `settings.gradle.kts` setting the path of toml.
+
+```
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") { from(files("build-logic/gradle/libraries.versions.toml")) }
+    }
+    ...
+}
 ```
