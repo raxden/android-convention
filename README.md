@@ -34,11 +34,12 @@ setup.
 
 ```
 git submodule add git@github.com:raxden/android-convention.git
+```
+3. Change the name of the folder to build-logic
+```
 git mv android-convention build-logic
 ```
-
-3. Modify your `settings.gradle.kts` setting the path of toml.
-
+4. Modify your `settings.gradle.kts` setting the path of toml.
 ```
 dependencyResolutionManagement {
     versionCatalogs {
