@@ -3,8 +3,8 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 
 object AppConfig {
     const val minSdk = 21
-    const val compileSdk = 31
-    const val targetSdk = 31
+    const val compileSdk = 33
+    const val targetSdk = 33
 
     private const val version = 11
     val javaLanguageVersion = JavaLanguageVersion.of(version)
