@@ -48,3 +48,115 @@ dependencyResolutionManagement {
     ...
 }
 ```
+
+## Plugins
+
+### Android application
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-application")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-application'
+}
+```
+
+</details>
+
+### Android library
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-library")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-library'
+}
+```
+
+</details>
+
+### Android compose library
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-compose-library")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-compose-library'
+}
+```
+
+</details>
+
+### Android feature
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-feature")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-feature'
+}
+```
+
+</details>
+
+### Android compose feature
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-compose-feature")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-compose-feature'
+}
+```
+
+</details>
