@@ -164,8 +164,5 @@ fun LibraryExtension.proguardConfig() {
         getByName("debug") {
             isMinifyEnabled = false
         }
-        getByName("release") {
-            isMinifyEnabled = true
-        }
     }
 }
