@@ -1,6 +1,5 @@
 package extension
 
-import AppConfig
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
@@ -10,13 +9,13 @@ import java.util.Properties
 fun BaseAppModuleExtension.androidConfig(
     project: Project
 ) {
-    val catalog = project.libs
+    val catalog = project.getVersionCatalog()
 
-    compileSdk = AppConfig.compileSdk
+    compileSdk = catalog.compileSDK
 
     compileOptions {
-        sourceCompatibility = AppConfig.sourceCompatibility
-        targetCompatibility = AppConfig.targetCompatibility
+        sourceCompatibility = catalog.sourceCompatibility
+        targetCompatibility = catalog.targetCompatibility
     }
 
     signingConfigs {
@@ -37,10 +36,10 @@ fun BaseAppModuleExtension.androidConfig(
     }
 
     defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
+        minSdk = catalog.minSDK
+        targetSdk = catalog.targetSDK
 
-        testInstrumentationRunner = AppConfig.testInstrumentationRunner
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -76,18 +75,18 @@ private fun Project.getSigningConfigProperties(buildType: String): Properties {
 fun LibraryExtension.androidConfig(
     project: Project
 ) {
-    val catalog = project.libs
+    val catalog = project.getVersionCatalog()
 
-    compileSdk = AppConfig.compileSdk
+    compileSdk = catalog.compileSDK
 
     compileOptions {
-        sourceCompatibility = AppConfig.sourceCompatibility
-        targetCompatibility = AppConfig.targetCompatibility
+        sourceCompatibility = catalog.sourceCompatibility
+        targetCompatibility = catalog.targetCompatibility
     }
 
     defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk // needed for instrumental tests
+        minSdk = catalog.minSDK
+        targetSdk = catalog.targetSDK // needed for instrumental tests
     }
 
     packagingOptions {
@@ -111,14 +110,14 @@ fun CommonExtension<*, *, *, *>.testsConfig() {
 fun CommonExtension<*, *, *, *>.composeConfig(
     project: Project
 ) {
-    val catalog = project.libs
+    val catalog = project.getVersionCatalog()
 
     buildFeatures {
         compose = true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = catalog.versions_composeCompiler
+        kotlinCompilerExtensionVersion = catalog.composeCompiler
     }
 
     packagingOptions {

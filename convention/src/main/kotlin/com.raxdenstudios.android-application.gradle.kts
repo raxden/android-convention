@@ -1,5 +1,7 @@
 import extension.androidConfig
 import extension.composeConfig
+import extension.getVersionCatalog
+import extension.jdk
 import extension.proguardConfig
 import extension.testsConfig
 
@@ -17,12 +19,14 @@ android {
     testsConfig()
     composeConfig(project)
 
+    val catalog = project.getVersionCatalog()
+
     kotlin {
-        jvmToolchain(AppConfig.javaLanguageVersion.asInt())
+        jvmToolchain(jdkVersion = catalog.jdk.asInt())
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.javaLanguageVersion.toString()
+        jvmTarget = catalog.jdk.toString()
     }
 
     // Allow references to generated code -> https://developer.android.com/training/dependency-injection/hilt-android#kts

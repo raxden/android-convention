@@ -1,5 +1,6 @@
 package extension
 
+import extension.Type.*
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -7,34 +8,52 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.getByType
 
-internal val Project.libs: VersionCatalog
-    get() = extensions
-        .getByType<VersionCatalogsExtension>()
-        .named("libs")
+enum class Type {
+    Versions,
+    Libraries,
+    Bundles,
+    Plugins,
+}
 
-internal val VersionCatalog.versions_composeCompiler: String
-    get() = getVersion("compose-compiler")
+fun Project.getVersionCatalog(
+    name: String = "libs",
+): VersionCatalog = extensions
+    .getByType<VersionCatalogsExtension>()
+    .named(name)
 
-internal val VersionCatalog.versions_minSDK: Int
-    get() = getVersion("min-sdk").toInt()
+fun VersionCatalog.get(
+    type: Type = Versions,
+    alias: String,
+): String = when (type) {
+    Versions -> getVersion(alias)
+    Libraries -> TODO()
+    Bundles -> TODO()
+    Plugins -> TODO()
+}
 
-internal val VersionCatalog.versions_compileSDK: Int
-    get() = getVersion("compile-sdk").toInt()
+private fun VersionCatalog.getVersion(alias: String) =
+    findVersion(alias).get().toString()
 
-internal val VersionCatalog.versions_targetSDK: Int
-    get() = getVersion("target-sdk").toInt()
+internal val VersionCatalog.composeCompiler: String
+    get() = getVersion("composeCompiler")
 
-internal val VersionCatalog.versions_sourceCompatibility: JavaVersion
-    get() = getVersion("source-compatibility").toJavaVersion()
+internal val VersionCatalog.minSDK: Int
+    get() = getVersion("minSdk").toInt()
 
-internal val VersionCatalog.versions_targetCompatibility: JavaVersion
-    get() = getVersion("target-compatibility").toJavaVersion()
+internal val VersionCatalog.compileSDK: Int
+    get() = getVersion("compileSdk").toInt()
 
-internal val VersionCatalog.version_jdk: JavaLanguageVersion
+internal val VersionCatalog.targetSDK: Int
+    get() = getVersion("targetSdk").toInt()
+
+internal val VersionCatalog.sourceCompatibility: JavaVersion
+    get() = getVersion("sourceCompatibility").toJavaVersion()
+
+internal val VersionCatalog.targetCompatibility: JavaVersion
+    get() = getVersion("targetCompatibility").toJavaVersion()
+
+internal val VersionCatalog.jdk: JavaLanguageVersion
     get() = JavaLanguageVersion.of(getVersion("jdk"))
-
-private fun VersionCatalog.getVersion(version: String) =
-    findVersion(version).get().toString()
 
 @Suppress("CyclomaticComplexMethod", "UnstableApiUsage")
 private fun String.toJavaVersion() : JavaVersion = when (this) {

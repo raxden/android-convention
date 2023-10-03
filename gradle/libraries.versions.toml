@@ -1,5 +1,13 @@
 [versions]
 
+jdk = "11"
+minSdk = "23"
+targetSdk = "34"
+compileSdk = "34"
+sourceCompatibility = "11"
+targetCompatibility = "11"
+composeCompiler = "1.4.0"
+
 androidx-core-ktx = "1.10.1"
 androidx-activity-ktx = "1.7.1"
 androidx-fragment-ktx = "1.5.7"
@@ -16,7 +24,7 @@ androidx-annotation = "1.6.0"
 androidx-appcompat = "1.6.1"
 androidx-compose = "1.4.3"
 androidx-compose-activity = "1.7.1"
-androidx-compose-bom = "2023.05.00"
+androidx-compose-bom = "2023.09.02"
 androidx-compose-compiler = "1.4.0"
 androidx-compose-navigation = "2.5.3"
 androidx-compose-navigation-hilt = "1.0.0"
@@ -25,44 +33,46 @@ androidx-compose-lifecycle = "2.6.0"
 android-material = "1.9.0"
 android-play-core = "1.10.3"
 android-versioning = "0.56.2"
-android-releasing = "0.56.2"
 android-publish-library = "0.56.2"
 accompanist = "0.30.1"
-coil = "2.3.0"
-commons-android = "4.49.1"
-commons-android-test = "4.42.0"
-commons-core = "4.44.0"
-commons-coroutines = "4.41.0"
-commons-coroutines-test = "4.41.0"
-commons-glide = "4.42.0"
-commons-okhttp3 = "4.41.0"
-commons-pagination-co = "4.42.0"
-commons-pagination-rx = "4.42.1"
-commons-permissions = "4.42.0"
-commons-preferences = "4.42.0"
-commons-retrofit = "4.42.3"
-commons-retrofit-rx = "4.41.0"
-commons-rx = "4.41.0"
-commons-rx-test = "4.42.0"
-commons-threeten = "4.43.0"
-commons-threeten-test = "4.42.0"
+benManes = "0.46.0"
+coil = "2.4.0"
+commons-android = "5.0.4"
+commons-android-test = "5.0.3"
+commons-core = "5.0.4"
+commons-coroutines = "5.0.3"
+commons-coroutines-test = "5.0.3"
+commons-glide = "5.0.3"
+commons-okhttp3 = "5.0.3"
+commons-pagination-co = "5.0.3"
+commons-pagination-rx = "5.0.3"
+commons-permissions = "5.0.3"
+commons-preferences = "5.0.3"
+commons-retrofit = "5.0.3"
+commons-retrofit-rx = "5.0.3"
+commons-rx = "5.0.3"
+commons-rx-test = "5.0.3"
+commons-threeten = "5.0.3"
+commons-threeten-test = "5.0.3"
 compose = "2023.05.01"
 compose-compiler = "1.4.0"
 coroutines = "1.7.3"
 espresso = "3.5.1"
 detekt = "1.22.0"
-firebase = "32.0.0"
+firebase = "32.3.1"
 firebase-appdistribution = "4.0.0"
 firebase-crashlytics = "2.9.5"
 gradle-plugin = "7.4.2"
 gradle-play-publisher = "3.8.3"
 gradle-secrets = "2.0.1"
 glide = "4.13.2"
+gander = "3.1.0"
 gson = "2.10.1"
 hilt = "2.46.1"
 json = "20230227"
 junit = "4.13.2"
-landscapist = "2.1.1"
+landscapist = "2.2.10"
+leakcanary = "2.10"
 kotlin = "1.8.0"
 mockk = "1.13.7"
 network-response-adapter = "5.0.0"
@@ -71,7 +81,7 @@ okhttp3 = "4.10.0"
 okhttp-mockwebserver = "2.7.5"
 play-services = "4.3.15"
 rest-mock = "0.4.4"
-retrofit = "2.9.0"
+retrofit2 = "2.9.0"
 roboletric = "4.8.1"
 room = "2.5.1"
 rootcoverage = "1.6.0"
@@ -83,6 +93,7 @@ timber = "5.0.1"
 timber-test = "1.0.1"
 truth = "1.1.3"
 turbine = "0.9.0"
+versionCatalogUpdate = "0.8.0"
 
 [libraries]
 
@@ -122,9 +133,8 @@ android-play-core = { module = "com.google.android.play:core", version.ref = "an
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 
-coil = { module = "io.coil-kt:coil" }
-coil-bom = { module = "io.coil-kt:coil-bom", version.ref = "coil" }
-coil-compose = { module = "io.coil-kt:coil-compose" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 commons-android = { module = "com.raxdenstudios:commons-android", version.ref = "commons-android" }
 commons-android-test = { module = "com.raxdenstudios:commons-android-test", version.ref = "commons-android-test" }
@@ -156,6 +166,9 @@ firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "fir
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging-ktx" }
 
+gander-debug = { module = "com.ashokvarma.android:gander-imdb", version.ref = "gander" }
+gander-release = { module = "com.ashokvarma.android:gander-no-op", version.ref = "gander" }
+
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 
@@ -169,11 +182,12 @@ json = { module = "org.json:json", version.ref = "json" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
-landscapist-animation = { module = "com.github.skydoves:landscapist-animation" }
-landscapist-bom = { module = "com.github.skydoves:landscapist-bom", version.ref = "landscapist" }
-landscapist-coil = { module = "com.github.skydoves:landscapist-coil" }
-landscapist-palette = { module = "com.github.skydoves:landscapist-palette" }
-landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder" }
+landscapist-coil = { module = "com.github.skydoves:landscapist-coil", version.ref = "landscapist" }
+landscapist-palette = { module = "com.github.skydoves:landscapist-palette", version.ref = "landscapist" }
+landscapist-animation = { module = "com.github.skydoves:landscapist-animation", version.ref = "landscapist" }
+landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
+
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 
@@ -186,15 +200,16 @@ okhttp-mockwebserver = { module = "com.squareup.okhttp:mockwebserver", version.r
 
 restmock = { module = "com.github.andrzejchm.RESTMock:android", version.ref = "rest-mock" }
 
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-retrofit-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofit" }
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit2" }
+retrofit-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofit2" }
 
 robolectric = { module = "org.robolectric:robolectric", version.ref = "roboletric" }
 
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-test = { module = "androidx.room:room-testing", version.ref = "room" }
 
 rx-android = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rx-android" }
 rx-kotlin = { module = "io.reactivex.rxjava2:rxkotlin", version.ref = "rx-kotlin" }
@@ -215,18 +230,20 @@ kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ve
 [bundles]
 
 material = [
+    "commons-core",
     "commons-android",
     "android-material",
     "timber",
 ]
 
-compose = [
+androidx-compose = [
     "androidx-compose-bom",
     "androidx-compose-activity",
     "androidx-compose-material",
     "androidx-compose-material-icons-extended",
     "androidx-compose-navigation",
     "androidx-compose-navigation-hilt",
+    "androidx-compose-ui",
     "androidx-compose-ui-constraintlayout",
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-lifecycle-viewmodel",
@@ -234,18 +251,24 @@ compose = [
     "accompanist-pager",
     "accompanist-systemuicontroller",
     "landscapist-animation",
-    "landscapist-bom",
     "landscapist-coil",
     "landscapist-palette",
     "landscapist-placeholder",
 ]
+
 compose-debug = [
     "androidx-compose-ui-test-manifest",
     "androidx-compose-ui-tooling",
 ]
 coil = [
     "coil",
-    "coil-bom",
+]
+coil-compose = [
+    "coil",
+    "coil-compose",
+]
+hilt = [
+    "hilt-android",
 ]
 room = [
     "room-ktx",
@@ -265,23 +288,25 @@ okhttp3 = [
 ]
 retrofit = [
     "commons-retrofit",
-    "retrofit",
+    "retrofit-core",
     "retrofit-gson",
     "commons-okhttp3",
     "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
+    "gson",
 ]
 retrofit-rx = [
     "commons-retrofit",
     "commons-retrofit-rx",
-    "retrofit",
+    "retrofit-core",
     "retrofit-gson",
     "retrofit-rxjava2",
     "commons-okhttp3",
     "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
+    "gson",
 ]
 rx = [
     "commons-rx",
@@ -290,6 +315,7 @@ rx = [
 ]
 coroutines = [
     "commons-coroutines",
+    "commons-pagination-co",
     "coroutines-android",
 ]
 threetenabp = [
@@ -308,6 +334,9 @@ test = [
 ]
 test-android = [
     "commons-android-test",
+]
+test-compose = [
+    "androidx-compose-ui-test-junit4",
 ]
 test-hilt = [
     "hilt-test",
@@ -347,7 +376,6 @@ hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 play-services = { id = "com.google.gms.google-services", version.ref = "play-services" }
 gradle-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "gradle-secrets" }
 
-android-releasing = { id = "com.raxdenstudios.android-releasing", version.ref = "android-releasing" }
 android-versioning = { id = "com.raxdenstudios.android-versioning", version.ref = "android-versioning" }
 android-publish-library = { id = "com.raxdenstudios.android-publish-library", version.ref = "android-publish-library" }
 
@@ -365,3 +393,6 @@ nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "n
 gradle-play-publisher = { id = "com.github.triplet.play", version.ref = "gradle-play-publisher" }
 
 test-logger = { id = "com.adarshr.test-logger", version.ref = "test-logger" }
+
+benManes = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
+versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
