@@ -1,4 +1,4 @@
-import extension.composeConfig
+import extension.composeSetup
 
 plugins {
     id("com.raxdenstudios.android-library")
@@ -6,5 +6,5 @@ plugins {
 
 android {
 
-    composeConfig(project)
+    composeSetup(project)
 }

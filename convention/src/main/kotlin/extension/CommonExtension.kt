@@ -4,9 +4,10 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
 import java.util.Properties
 
-fun BaseAppModuleExtension.androidConfig(
+fun BaseAppModuleExtension.defaultSetup(
     project: Project
 ) {
     val catalog = project.getVersionCatalog()
@@ -72,10 +73,10 @@ private fun Project.getSigningConfigProperties(buildType: String): Properties {
     return properties
 }
 
-fun LibraryExtension.androidConfig(
-    project: Project
+fun LibraryExtension.defaultSetup(
+    project: Project,
+    catalog: VersionCatalog = project.getVersionCatalog(),
 ) {
-    val catalog = project.getVersionCatalog()
 
     compileSdk = catalog.compileSDK
 
@@ -98,7 +99,7 @@ fun LibraryExtension.androidConfig(
     }
 }
 
-fun CommonExtension<*, *, *, *>.testsConfig() {
+fun CommonExtension<*, *, *, *>.testsSetup() {
     buildTypes {
         getByName("debug") {
             enableUnitTestCoverage = true
@@ -107,11 +108,10 @@ fun CommonExtension<*, *, *, *>.testsConfig() {
     }
 }
 
-fun CommonExtension<*, *, *, *>.composeConfig(
-    project: Project
+fun CommonExtension<*, *, *, *>.composeSetup(
+    project: Project,
+    catalog: VersionCatalog = project.getVersionCatalog(),
 ) {
-    val catalog = project.getVersionCatalog()
-
     buildFeatures {
         compose = true
     }
@@ -139,7 +139,7 @@ fun CommonExtension<*, *, *, *>.roomConfig(
     }
 }
 
-fun BaseAppModuleExtension.proguardConfig() {
+fun BaseAppModuleExtension.proguardSetup() {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
@@ -155,7 +155,7 @@ fun BaseAppModuleExtension.proguardConfig() {
     }
 }
 
-fun LibraryExtension.proguardConfig() {
+fun LibraryExtension.proguardSetup() {
     defaultConfig {
         consumerProguardFile("consumer-rules.pro")
     }

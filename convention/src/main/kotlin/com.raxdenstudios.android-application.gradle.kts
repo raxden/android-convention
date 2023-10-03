@@ -1,9 +1,9 @@
-import extension.androidConfig
-import extension.composeConfig
+import extension.defaultSetup
+import extension.composeSetup
 import extension.getVersionCatalog
 import extension.jdk
-import extension.proguardConfig
-import extension.testsConfig
+import extension.proguardSetup
+import extension.testsSetup
 
 plugins {
     id("com.android.application")
@@ -14,10 +14,10 @@ plugins {
 
 android {
 
-    androidConfig(project)
-    proguardConfig()
-    testsConfig()
-    composeConfig(project)
+    defaultSetup(project)
+    proguardSetup()
+    testsSetup()
+    composeSetup(project)
 
     val catalog = project.getVersionCatalog()
 
