@@ -13,3 +13,13 @@ fun DependencyHandlerScope.implementationBundle(dependencyNotation: Provider<Ext
         }
     }
 }
+
+fun DependencyHandlerScope.androidTestImplementationBundle(dependencyNotation: Provider<ExternalModuleDependencyBundle>) {
+    dependencyNotation.get().forEach { dependency ->
+        if (dependency.name.contains("bom")) {
+            add("androidTestImplementation", platform(dependency))
+        } else {
+            add("androidTestImplementation", dependency)
+        }
+    }
+}
