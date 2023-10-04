@@ -8,8 +8,20 @@ fun DependencyHandlerScope.implementationBundle(dependencyNotation: Provider<Ext
     dependencyNotation.get().forEach { dependency ->
         if (dependency.name.contains("bom")) {
             add("implementation", platform(dependency))
+        } else if (dependency.name.contains("compiler")) {
+            add("kapt", dependency)
         } else {
             add("implementation", dependency)
+        }
+    }
+}
+
+fun DependencyHandlerScope.debugImplementationBundle(dependencyNotation: Provider<ExternalModuleDependencyBundle>) {
+    dependencyNotation.get().forEach { dependency ->
+        if (dependency.name.contains("bom")) {
+            add("debugImplementation", platform(dependency))
+        } else {
+            add("debugImplementation", dependency)
         }
     }
 }
@@ -18,6 +30,8 @@ fun DependencyHandlerScope.androidTestImplementationBundle(dependencyNotation: P
     dependencyNotation.get().forEach { dependency ->
         if (dependency.name.contains("bom")) {
             add("androidTestImplementation", platform(dependency))
+        } else if (dependency.name.contains("compiler")) {
+            add("kaptAndroidTest", dependency)
         } else {
             add("androidTestImplementation", dependency)
         }
