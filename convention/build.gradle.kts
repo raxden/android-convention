@@ -21,6 +21,7 @@ plugins {
 
 group = "com.raxdenstudios.build-logic.convention"
 
+
 dependencies {
     implementation(libs.android.gradlePlugin)
     implementation(libs.kotlin.gradlePlugin)
