@@ -100,6 +100,9 @@ fun LibraryExtension.defaultSetup(
 }
 
 fun CommonExtension<*, *, *, *>.testsSetup() {
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
     buildTypes {
         getByName("debug") {
             enableUnitTestCoverage = true
