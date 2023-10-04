@@ -21,6 +21,10 @@ plugins {
 
 group = "com.raxdenstudios.build-logic.convention"
 
+java {
+    sourceCompatibility = JavaVersion.toVersion(libs.versions.sourceCompatibility.get())
+    targetCompatibility = JavaVersion.toVersion(libs.versions.targetCompatibility.get())
+}
 
 dependencies {
     implementation(libs.android.gradlePlugin)

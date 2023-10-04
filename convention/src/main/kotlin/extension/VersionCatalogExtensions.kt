@@ -1,6 +1,9 @@
 package extension
 
-import extension.Type.*
+import extension.Type.Bundles
+import extension.Type.Libraries
+import extension.Type.Plugins
+import extension.Type.Versions
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -47,34 +50,10 @@ internal val VersionCatalog.targetSDK: Int
     get() = getVersion("targetSdk").toInt()
 
 internal val VersionCatalog.sourceCompatibility: JavaVersion
-    get() = getVersion("sourceCompatibility").toJavaVersion()
+    get() = JavaVersion.toVersion(getVersion("sourceCompatibility"))
 
 internal val VersionCatalog.targetCompatibility: JavaVersion
-    get() = getVersion("targetCompatibility").toJavaVersion()
+    get() = JavaVersion.toVersion(getVersion("targetCompatibility"))
 
 internal val VersionCatalog.jdk: JavaLanguageVersion
     get() = JavaLanguageVersion.of(getVersion("jdk"))
-
-@Suppress("CyclomaticComplexMethod", "UnstableApiUsage")
-private fun String.toJavaVersion() : JavaVersion = when (this) {
-    "1.6" -> JavaVersion.VERSION_1_6
-    "1.7" -> JavaVersion.VERSION_1_7
-    "1.8" -> JavaVersion.VERSION_1_8
-    "9" -> JavaVersion.VERSION_1_9
-    "10" -> JavaVersion.VERSION_1_10
-    "11" -> JavaVersion.VERSION_11
-    "12" -> JavaVersion.VERSION_12
-    "13" -> JavaVersion.VERSION_13
-    "14" -> JavaVersion.VERSION_14
-    "15" -> JavaVersion.VERSION_15
-    "16" -> JavaVersion.VERSION_16
-    "17" -> JavaVersion.VERSION_17
-    "18" -> JavaVersion.VERSION_18
-    "19" -> JavaVersion.VERSION_19
-    "20" -> JavaVersion.VERSION_20
-    "21" -> JavaVersion.VERSION_21
-    "22" -> JavaVersion.VERSION_22
-    "23" -> JavaVersion.VERSION_23
-    "24" -> JavaVersion.VERSION_24
-    else -> JavaVersion.VERSION_1_8
-}
