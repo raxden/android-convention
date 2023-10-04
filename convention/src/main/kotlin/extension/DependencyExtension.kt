@@ -4,7 +4,9 @@ import org.gradle.api.artifacts.ExternalModuleDependencyBundle
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
-fun DependencyHandlerScope.implementationBundle(dependencyNotation: Provider<ExternalModuleDependencyBundle>) {
+fun DependencyHandlerScope.implementationBundle(
+    dependencyNotation: Provider<ExternalModuleDependencyBundle>
+) {
     dependencyNotation.get().forEach { dependency ->
         if (dependency.name.contains("bom")) {
             add("implementation", platform(dependency))
@@ -16,7 +18,9 @@ fun DependencyHandlerScope.implementationBundle(dependencyNotation: Provider<Ext
     }
 }
 
-fun DependencyHandlerScope.debugImplementationBundle(dependencyNotation: Provider<ExternalModuleDependencyBundle>) {
+fun DependencyHandlerScope.debugImplementationBundle(
+    dependencyNotation: Provider<ExternalModuleDependencyBundle>
+) {
     dependencyNotation.get().forEach { dependency ->
         if (dependency.name.contains("bom")) {
             add("debugImplementation", platform(dependency))
@@ -26,7 +30,9 @@ fun DependencyHandlerScope.debugImplementationBundle(dependencyNotation: Provide
     }
 }
 
-fun DependencyHandlerScope.androidTestImplementationBundle(dependencyNotation: Provider<ExternalModuleDependencyBundle>) {
+fun DependencyHandlerScope.androidTestImplementationBundle(
+    dependencyNotation: Provider<ExternalModuleDependencyBundle>
+) {
     dependencyNotation.get().forEach { dependency ->
         if (dependency.name.contains("bom")) {
             add("androidTestImplementation", platform(dependency))
