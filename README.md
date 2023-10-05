@@ -41,6 +41,11 @@ git mv android-convention build-logic
 ```
 4. Modify your `settings.gradle.kts` setting the path of toml.
 ```
+pluginManagement {
+    includeBuild("conventions")
+    ...
+}
+...
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") { from(files("build-logic/gradle/libraries.versions.toml")) }
