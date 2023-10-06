@@ -5,13 +5,14 @@ import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.plugins.ExtensionAware
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import java.util.Properties
 
 fun BaseAppModuleExtension.defaultSetup(
-    project: Project
+    project: Project,
+    catalog: VersionCatalog = project.getVersionCatalog(),
 ) {
-    val catalog = project.getVersionCatalog()
-
     compileSdk = catalog.compileSDK
 
     compileOptions {
@@ -131,14 +132,22 @@ fun CommonExtension<*, *, *, *>.composeSetup(
     }
 }
 
-fun CommonExtension<*, *, *, *>.roomConfig(
+fun CommonExtension<*, *, *, *>.roomSetup(
     project: Project
 ) {
+    val schemasPath = "${project.projectDir}/schemas"
+    defaultConfig {
+        project.kapt {
+            arguments {
+                arg("room.schemaLocation", schemasPath)
+            }
+        }
+    }
     sourceSets {
         // Adds exported schema location as test app assets.
         getByName("debug")
             .assets
-            .srcDirs(project.files("${project.projectDir}/schemas"))
+            .srcDirs(project.files(schemasPath))
     }
 }
 
@@ -168,3 +177,6 @@ fun LibraryExtension.proguardSetup() {
         }
     }
 }
+
+private fun Project.kapt(configure: KaptExtension.() -> Unit): Unit =
+    (this as ExtensionAware).extensions.configure("kapt", configure)
