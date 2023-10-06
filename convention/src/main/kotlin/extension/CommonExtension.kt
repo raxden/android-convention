@@ -3,9 +3,6 @@ package extension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kapt
-import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kotlin
-import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kotlinOptions
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.plugins.ExtensionAware
@@ -71,7 +68,7 @@ fun BaseAppModuleExtension.defaultSetup(
         jvmToolchain(jdkVersion = catalog.jdk.asInt())
     }
 
-    project.kotlinOptions {
+    kotlinOptions {
         jvmTarget = catalog.jdk.toString()
     }
 
@@ -121,7 +118,7 @@ fun LibraryExtension.defaultSetup(
         jvmToolchain(jdkVersion = catalog.jdk.asInt())
     }
 
-    project.kotlinOptions {
+    kotlinOptions {
         jvmTarget = catalog.jdk.toString()
     }
 
@@ -215,5 +212,8 @@ private fun Project.kapt(configure: KaptExtension.() -> Unit): Unit =
 private fun Project.kotlin(configure: KotlinAndroidProjectExtension.() -> Unit): Unit =
     (this as ExtensionAware).extensions.configure("kotlin", configure)
 
-private fun Project.kotlinOptions(configure: KotlinJvmOptions.() -> Unit): Unit =
+private fun BaseAppModuleExtension.kotlinOptions(configure: KotlinJvmOptions.() -> Unit): Unit =
+    (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
+
+private fun LibraryExtension.kotlinOptions(configure: KotlinJvmOptions.() -> Unit): Unit =
     (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
