@@ -3,9 +3,14 @@ package extension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kapt
+import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kotlin
+import gradle.kotlin.dsl.accessors._262d95018d1666636cc93fe101450074.kotlinOptions
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.plugins.ExtensionAware
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import java.util.Properties
 
@@ -61,6 +66,19 @@ fun BaseAppModuleExtension.defaultSetup(
             excludes.add("META-INF/*.kotlin_module")
         }
     }
+
+    project.kotlin {
+        jvmToolchain(jdkVersion = catalog.jdk.asInt())
+    }
+
+    project.kotlinOptions {
+        jvmTarget = catalog.jdk.toString()
+    }
+
+    // Allow references to generated code -> https://developer.android.com/training/dependency-injection/hilt-android#kts
+    project.kapt {
+        correctErrorTypes = true
+    }
 }
 
 private fun Project.getSigningConfigProperties(buildType: String): Properties {
@@ -97,6 +115,19 @@ fun LibraryExtension.defaultSetup(
             excludes.add("META-INF/LICENSE-notice.md")
 //            excludes.add("META-INF/*.kotlin_module")
         }
+    }
+
+    project.kotlin {
+        jvmToolchain(jdkVersion = catalog.jdk.asInt())
+    }
+
+    project.kotlinOptions {
+        jvmTarget = catalog.jdk.toString()
+    }
+
+    // Allow references to generated code -> https://developer.android.com/training/dependency-injection/hilt-android#kts
+    project.kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -180,3 +211,9 @@ fun LibraryExtension.proguardSetup() {
 
 private fun Project.kapt(configure: KaptExtension.() -> Unit): Unit =
     (this as ExtensionAware).extensions.configure("kapt", configure)
+
+private fun Project.kotlin(configure: KotlinAndroidProjectExtension.() -> Unit): Unit =
+    (this as ExtensionAware).extensions.configure("kotlin", configure)
+
+private fun Project.kotlinOptions(configure: KotlinJvmOptions.() -> Unit): Unit =
+    (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
