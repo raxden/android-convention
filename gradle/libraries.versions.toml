@@ -1,21 +1,21 @@
 [versions]
 
 jdk = "11"
-minSdk = "23"
-targetSdk = "34"
-compileSdk = "34"
+minSdk = "21"
+targetSdk = "33"
+compileSdk = "33"
 sourceCompatibility = "11"
 targetCompatibility = "11"
 composeCompiler = "1.4.0"
 
 androidx-core-ktx = "1.10.1"
-androidx-activity-ktx = "1.7.1"
+androidx-activity-ktx = "1.8.0"
 androidx-fragment-ktx = "1.5.7"
-androidx-preference-ktx = "1.2.0"
+androidx-preference-ktx = "1.2.1"
 androidx-constraintlayout = "2.1.4"
 androidx-swiperefreshlayout = "1.1.0"
 androidx-browser = "1.5.0"
-androidx-lifecycle = "2.6.1"
+androidx-lifecycle = "2.6.2"
 androidx-test-core = "2.2.0"
 androidx-test-junit-ktx = "1.1.5"
 androidx-test-rules = "1.5.0"
@@ -35,7 +35,7 @@ android-versioning = "0.56.2"
 android-publish-library = "0.56.2"
 accompanist = "0.30.1"
 benManes = "0.46.0"
-coil = "2.3.0"
+coil = "2.4.0"
 commons-android = "5.0.4"
 commons-android-test = "5.0.3"
 commons-core = "5.0.4"
@@ -53,14 +53,14 @@ commons-rx = "5.0.3"
 commons-rx-test = "5.0.3"
 commons-threeten = "5.0.3"
 commons-threeten-test = "5.0.3"
-coroutines = "1.6.4"
+coroutines = "1.7.3"
 espresso = "3.5.1"
 detekt = "1.22.0"
 firebase = "32.0.0"
 firebase-appdistribution = "4.0.0"
-firebase-crashlytics = "2.9.5"
+firebase-crashlytics = "2.9.9"
 gradle-plugin = "7.4.2"
-gradle-play-publisher = "3.8.3"
+gradle-play-publisher = "3.8.4"
 gradle-secrets = "2.0.1"
 glide = "4.13.2"
 gander = "3.1.0"
@@ -68,9 +68,9 @@ gson = "2.10.1"
 hilt = "2.46.1"
 json = "20230227"
 landscapist = "2.1.1"
-leakcanary = "2.10"
+leakcanary = "2.12"
 kotlin = "1.8.0"
-mockk = "1.13.5"
+mockk = "1.13.8"
 network-response-adapter = "5.0.0"
 nexus-publish = "1.3.0"
 okhttp3 = "4.11.0"
@@ -79,7 +79,7 @@ play-services = "4.3.15"
 rest-mock = "0.4.4"
 retrofit2 = "2.9.0"
 roboletric = "4.8.1"
-room = "2.5.1"
+room = "2.5.2"
 rootcoverage = "1.6.0"
 rx-android = "2.1.1"
 rx-kotlin = "2.4.0"
@@ -87,9 +87,9 @@ test-logger = "3.2.0"
 threetenabp = "1.4.6"
 timber = "5.0.1"
 timber-test = "1.0.1"
-truth = "1.1.3"
+truth = "1.1.5"
 turbine = "0.9.0"
-versionCatalogUpdate = "0.8.0"
+versionCatalogUpdate = "0.8.1"
 
 [libraries]
 
@@ -223,10 +223,11 @@ kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ve
 
 [bundles]
 
-material = [
+android-material = [
     "commons-core",
     "commons-android",
     "android-material",
+    "android-play-core",
     "timber",
 ]
 androidx-compose = [
@@ -248,12 +249,10 @@ androidx-compose = [
     "landscapist-palette",
     "landscapist-placeholder",
 ]
-compose-debug = [
+debug-androidx-compose = [
+    "androidx-compose-bom",
     "androidx-compose-ui-test-manifest",
     "androidx-compose-ui-tooling",
-]
-coil = [
-    "coil",
 ]
 coil-compose = [
     "coil",
@@ -261,10 +260,12 @@ coil-compose = [
 ]
 hilt = [
     "hilt-android",
+    "hilt-compiler",
 ]
 room = [
     "room-ktx",
     "room-runtime",
+    "room-compiler",
 ]
 firebase = [
     "firebase-bom",
@@ -278,7 +279,7 @@ okhttp3 = [
     "okhttp3",
     "okhttp3-logging-interceptor",
 ]
-retrofit = [
+retrofit2 = [
     "commons-retrofit",
     "retrofit-core",
     "retrofit-gson",
@@ -286,9 +287,10 @@ retrofit = [
     "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
+    "network-response-adapter",
     "gson",
 ]
-retrofit-rx = [
+retrofit2-rx = [
     "commons-retrofit",
     "commons-retrofit-rx",
     "retrofit-core",
@@ -298,6 +300,7 @@ retrofit-rx = [
     "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
+    "network-response-adapter",
     "gson",
 ]
 rx = [
@@ -326,12 +329,20 @@ test = [
 ]
 test-android = [
     "commons-android-test",
+    "mockk-android",
+    "timber-test",
+    "truth",
 ]
-test-compose = [
+test-androidx-compose = [
+    "androidx-compose-bom",
     "androidx-compose-ui-test-junit4",
 ]
 test-hilt = [
     "hilt-test",
+    "hilt-compiler",
+]
+test-room = [
+    "room-test",
 ]
 test-rx = [
     "commons-rx-test",
