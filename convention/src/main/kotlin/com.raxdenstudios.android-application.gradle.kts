@@ -1,4 +1,3 @@
-import extension.composeSetup
 import extension.defaultSetup
 import extension.proguardSetup
 import extension.testsSetup
