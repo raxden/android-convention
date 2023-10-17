@@ -15,4 +15,5 @@ android {
     defaultSetup(project)
     proguardSetup()
     testsSetup()
+    composeSetup(project)
 }
