@@ -1,4 +1,3 @@
-import extension.composeSetup
 import extension.defaultSetup
 import extension.proguardSetup
 import extension.testsSetup
@@ -15,5 +14,4 @@ android {
     defaultSetup(project)
     proguardSetup()
     testsSetup()
-    composeSetup(project)
 }

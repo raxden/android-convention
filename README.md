@@ -56,7 +56,7 @@ dependencyResolutionManagement {
 
 ## Plugins
 
-### Android application
+#### Android application
 
 <details open><summary>Kotlin</summary>
 
@@ -78,7 +78,7 @@ plugins {
 
 </details>
 
-### Android library
+#### Android library
 
 <details open><summary>Kotlin</summary>
 
@@ -100,29 +100,7 @@ plugins {
 
 </details>
 
-### Android compose library
-
-<details open><summary>Kotlin</summary>
-
-```kt
-plugins {
-    id("com.raxdenstudios.android-compose-library")
-}
-```
-
-</details>
-
-<details><summary>Groovy</summary>
-
-```groovy
-plugins {
-    id 'com.raxdenstudios.android-compose-library'
-}
-```
-
-</details>
-
-### Android feature
+#### Android feature
 
 <details open><summary>Kotlin</summary>
 
@@ -144,7 +122,53 @@ plugins {
 
 </details>
 
-### Android compose feature
+### For compose
+
+#### Android compose application
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-compose-application")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-compose-application'
+}
+```
+
+</details>
+
+#### Android compose library
+
+<details open><summary>Kotlin</summary>
+
+```kt
+plugins {
+    id("com.raxdenstudios.android-compose-library")
+}
+```
+
+</details>
+
+<details><summary>Groovy</summary>
+
+```groovy
+plugins {
+    id 'com.raxdenstudios.android-compose-library'
+}
+```
+
+</details>
+
+#### Android compose feature
 
 <details open><summary>Kotlin</summary>
 

@@ -4,7 +4,19 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
-        create("libs") { from(files("../gradle/libraries.versions.toml")) }
+        create("libs") {
+            val tomlFilePath = listOf(
+                "../gradle/libraries.versions.toml",
+                "./gradle/libraries.versions.toml",
+            )
+            for (path in tomlFilePath) {
+                val file = File(path)
+                if (file.exists()) {
+                    from(files(file))
+                    break
+                }
+            }
+        }
     }
 }
 include(":convention")
