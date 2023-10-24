@@ -6,7 +6,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             val tomlFilePath = listOf(
-                "${rootProject.projectDir}/gradle/libraries.versions.toml",
+                "${rootProject.projectDir.parentFile}/gradle/libraries.versions.toml",
                 "./gradle/libraries.versions.toml",
             )
             for (path in tomlFilePath) {
