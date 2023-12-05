@@ -62,7 +62,7 @@ dependencyResolutionManagement {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-application")
+    id("android-application-conventions")
 }
 ```
 
@@ -72,7 +72,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-application'
+    id 'android-application-conventions'
 }
 ```
 
@@ -84,7 +84,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-library")
+    id("android-library-conventions")
 }
 ```
 
@@ -94,7 +94,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-library'
+    id 'android-library-conventions'
 }
 ```
 
@@ -106,7 +106,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-feature")
+    id("android-feature-conventions")
 }
 ```
 
@@ -116,7 +116,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-feature'
+    id 'android-feature-conventions'
 }
 ```
 
@@ -130,7 +130,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-compose-application")
+    id("android-compose-application-conventions")
 }
 ```
 
@@ -140,7 +140,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-compose-application'
+    id 'android-compose-application-conventions'
 }
 ```
 
@@ -152,7 +152,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-compose-library")
+    id("android-compose-library-conventions")
 }
 ```
 
@@ -162,7 +162,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-compose-library'
+    id 'android-compose-library-conventions'
 }
 ```
 
@@ -174,7 +174,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-compose-feature")
+    id("android-compose-feature-conventions")
 }
 ```
 
@@ -184,7 +184,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'com.raxdenstudios.android-compose-feature'
+    id 'android-compose-feature-conventions'
 }
 ```
 
