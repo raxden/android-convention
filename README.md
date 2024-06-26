@@ -84,7 +84,7 @@ plugins {
 
 ```kt
 plugins {
-    id("com.raxdenstudios.android-library")
+    id("android-library-conventions")
 }
 ```
 
