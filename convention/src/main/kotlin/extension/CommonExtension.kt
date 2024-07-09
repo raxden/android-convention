@@ -17,8 +17,8 @@ internal fun Project.getSigningConfigProperties(buildType: String): Properties {
     return properties
 }
 
-@Suppress("UnstableApiUsage")
-fun CommonExtension<*, *, *, *>.roomSetup(
+
+fun CommonExtension<*, *, *, *, *, *>.roomSetup(
     project: Project
 ) {
     val schemasPath = "${project.projectDir}/schemas"

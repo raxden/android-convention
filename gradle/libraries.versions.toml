@@ -1,35 +1,40 @@
 [versions]
 
-jdk = "11"
-minSdk = "21"
-targetSdk = "33"
-compileSdk = "33"
-sourceCompatibility = "11"
-targetCompatibility = "11"
+jdk = "17"
+minSdk = "23"
+targetSdk = "34"
+compileSdk = "34"
+sourceCompatibility = "17"
+targetCompatibility = "17"
 composeCompiler = "1.4.0"
 
-androidx-core-ktx = "1.10.1"
-androidx-activity-ktx = "1.8.0"
-androidx-fragment-ktx = "1.5.7"
+androidx-core-ktx = "1.13.1"
+androidx-activity-ktx = "1.9.0"
+androidx-fragment-ktx = "1.8.1"
 androidx-preference-ktx = "1.2.1"
 androidx-constraintlayout = "2.1.4"
 androidx-swiperefreshlayout = "1.1.0"
-androidx-browser = "1.5.0"
-androidx-lifecycle = "2.6.2"
+androidx-browser = "1.8.0"
+androidx-lifecycle = "2.8.3"
 androidx-test-core = "2.2.0"
-androidx-test-junit-ktx = "1.1.5"
-androidx-test-rules = "1.5.0"
-androidx-test-runner = "1.5.2"
-androidx-annotation = "1.6.0"
-androidx-appcompat = "1.6.1"
-androidx-compose = "1.4.3"
-androidx-compose-activity = "1.7.1"
-androidx-compose-bom = "2023.05.00"
-androidx-compose-navigation = "2.5.3"
-androidx-compose-navigation-hilt = "1.0.0"
+androidx-test-junit-ktx = "1.2.1"
+androidx-test-rules = "1.6.1"
+androidx-test-runner = "1.6.1"
+androidx-annotation = "1.8.0"
+androidx-appcompat = "1.7.0"
+androidx-compose = "1.6.8"
+androidx-compose-activity = "1.9.0"
+androidx-compose-bom = "2024.06.00"
+androidx-compose-navigation = "2.8.0-beta04"
+androidx-compose-navigation-hilt = "1.2.0"
 androidx-compose-ui-constraintlayout = "1.0.1"
 androidx-compose-lifecycle = "2.6.0"
-android-material = "1.10.0"
+androidx-media = "1.7.0"
+androidx-media3-exoplayer = "1.3.1"
+androidx-startup = "1.1.1"
+androidx-workmanager = "2.9.0"
+androidx-workmanager-hilt = "1.2.0"
+android-material = "1.12.0"
 android-play-core = "1.10.3"
 android-versioning = "0.56.2"
 android-publish-library = "0.56.2"
@@ -38,8 +43,8 @@ benManes = "0.46.0"
 coil = "2.4.0"
 commons-android = "5.0.4"
 commons-android-test = "5.0.3"
-commons-core = "5.0.4"
-commons-coroutines = "5.0.3"
+commons-core = "5.2.0"
+commons-coroutines = "5.3.0"
 commons-coroutines-test = "5.0.3"
 commons-glide = "5.0.3"
 commons-okhttp3 = "5.0.3"
@@ -47,49 +52,52 @@ commons-pagination-co = "5.0.3"
 commons-pagination-rx = "5.0.3"
 commons-permissions = "5.0.3"
 commons-preferences = "5.0.3"
-commons-retrofit = "5.0.3"
+commons-retrofit = "5.1.0"
 commons-retrofit-rx = "5.0.3"
 commons-rx = "5.0.3"
 commons-rx-test = "5.0.3"
 commons-threeten = "5.0.3"
 commons-threeten-test = "5.0.3"
 coroutines = "1.7.3"
-espresso = "3.5.1"
+kotlinx-serialization-json = "1.6.3"
+espresso = "3.6.1"
 detekt = "1.22.0"
-firebase = "32.0.0"
-firebase-appdistribution = "4.0.0"
-firebase-crashlytics = "2.9.9"
-gradle-plugin = "7.4.2"
+firebase = "33.1.1"
+firebase-appdistribution = "5.0.0"
+firebase-crashlytics = "3.0.2"
+gradle-plugin = "8.5.0"
 gradle-play-publisher = "3.8.4"
 gradle-secrets = "2.0.1"
 glide = "4.13.2"
 gander = "3.1.0"
 gson = "2.10.1"
-hilt = "2.46.1"
+hilt = "2.49"
 json = "20230227"
 landscapist = "2.1.1"
 leakcanary = "2.12"
-kotlin = "1.8.0"
+kotlin = "1.9.23"
 mockk = "1.13.8"
 network-response-adapter = "5.0.0"
 nexus-publish = "1.3.0"
 okhttp3 = "4.11.0"
 okhttp-mockwebserver = "2.7.5"
-play-services = "4.3.15"
+play-services = "4.4.2"
 rest-mock = "0.4.4"
 retrofit2 = "2.9.0"
 roboletric = "4.8.1"
-room = "2.5.2"
-rootcoverage = "1.6.0"
+room = "2.6.1"
+rootcoverage = "1.8.0"
 rx-android = "2.1.1"
 rx-kotlin = "2.4.0"
 test-logger = "3.2.0"
 threetenabp = "1.4.6"
 timber = "5.0.1"
 timber-test = "1.0.1"
-truth = "1.1.5"
+truth = "1.4.3"
 turbine = "0.9.0"
 versionCatalogUpdate = "0.8.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
 
 [libraries]
 
@@ -122,6 +130,17 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", versi
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
 androidx-compose-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-compose-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-media = { module = "androidx.media:media", version.ref = "androidx-media" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "androidx-media3-exoplayer" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
+androidx-work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-workmanager" }
+androidx-work-hilt = { module = "androidx.hilt:hilt-work", version.ref = "androidx-workmanager-hilt" }
+androidx-work-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-workmanager-hilt" }
+androidx-work-test = { module = "androidx.work:work-testing", version.ref = "androidx-workmanager" }
 
 android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
 android-play-core = { module = "com.google.android.play:core", version.ref = "android-play-core" }
@@ -152,6 +171,7 @@ commons-threeten-test = { module = "com.raxdenstudios:commons-threeten-test", ve
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
@@ -220,6 +240,8 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 # Dependencies of the included build-logic
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [bundles]
 
@@ -236,14 +258,15 @@ androidx-compose = [
     "androidx-compose-material",
     "androidx-compose-material-icons-extended",
     "androidx-compose-navigation",
+    "kotlinx-serialization-json",
     "androidx-compose-navigation-hilt",
     "androidx-compose-ui",
     "androidx-compose-ui-constraintlayout",
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-lifecycle-viewmodel",
     "androidx-compose-lifecycle-runtime",
-    "accompanist-pager",
     "accompanist-systemuicontroller",
+    "accompanist-pager",
     "landscapist-animation",
     "landscapist-coil",
     "landscapist-palette",
@@ -253,6 +276,19 @@ debug-androidx-compose = [
     "androidx-compose-bom",
     "androidx-compose-ui-test-manifest",
     "androidx-compose-ui-tooling",
+]
+androidx-media3 = [
+    "androidx-media", # Needed MediaSessionCompat.Token
+    "androidx-media3-exoplayer",
+    "androidx-media3-exoplayer-dash",
+    "androidx-media3-exoplayer-hls",
+    "androidx-media3-ui",
+    "androidx-media3-session",
+]
+androidx-workmanager = [
+    "androidx-work-ktx",
+    "androidx-work-hilt",
+    "androidx-work-hilt-compiler",
 ]
 coil-compose = [
     "coil",
@@ -385,6 +421,7 @@ android-publish-library = { id = "com.raxdenstudios.android-publish-library", ve
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 detekt-formatting = { id = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
