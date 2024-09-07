@@ -8,7 +8,6 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 class Versions(
     catalog: VersionCatalog
 ) {
-    val composeCompiler: String = catalog.findVersionOrThrow("composeCompiler")
     val minSdk: Int = catalog.findVersionOrThrow("minSdk").toInt()
     val compileSdk: Int = catalog.findVersionOrThrow("compileSdk").toInt()
     val targetSdk: Int = catalog.findVersionOrThrow("targetSdk").toInt()
