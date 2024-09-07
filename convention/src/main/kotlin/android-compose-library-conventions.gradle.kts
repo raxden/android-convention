@@ -1,18 +1,12 @@
-import extension.libs
-import extension.versions
-
 plugins {
     id("android-library-conventions")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler
     }
 
     packaging {
