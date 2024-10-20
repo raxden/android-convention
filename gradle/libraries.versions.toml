@@ -46,12 +46,12 @@ commons-core = "5.2.0"
 commons-coroutines = "5.4.0"
 commons-coroutines-test = "5.0.3"
 commons-glide = "5.0.3"
-commons-okhttp3 = "5.0.4"
+commons-okhttp3 = "5.0.5"
 commons-pagination-co = "5.0.3"
 commons-pagination-rx = "5.0.3"
 commons-permissions = "5.0.3"
 commons-preferences = "5.0.3"
-commons-retrofit = "5.1.2"
+commons-retrofit = "5.1.1"
 commons-retrofit-rx = "5.0.3"
 commons-rx = "5.0.3"
 commons-rx-test = "5.0.3"
@@ -308,7 +308,7 @@ firebase = [
 ]
 okhttp3 = [
     "commons-okhttp3",
-#    "okhttp3-bom",
+    #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
 ]
@@ -317,7 +317,7 @@ retrofit2 = [
     "retrofit-core",
     "retrofit-gson",
     "commons-okhttp3",
-#    "okhttp3-bom",
+    #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
     "network-response-adapter",
@@ -330,7 +330,7 @@ retrofit2Rx = [
     "retrofit-gson",
     "retrofit-rxjava2",
     "commons-okhttp3",
-#    "okhttp3-bom",
+    #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
     "network-response-adapter",
@@ -362,9 +362,9 @@ test = [
 ]
 test-android = [
     "commons-android-test",
-#    "mockk-android",
+    #    "mockk-android",
     "timber-test",
-#    "truth",
+    #    "truth",
 ]
 test-androidx-compose = [
     "androidx-compose-bom",
