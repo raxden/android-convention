@@ -20,7 +20,7 @@ open class DownloadGradleDependencies : DefaultTask() {
         println("  ... downloading 'conventions' files from $GIT_CONVENTIONS_SOURCE...")
 
         val source = URL(GIT_CONVENTIONS_SOURCE)
-        val destination = File(project.rootDir.path + "/build-logic-temp/")
+        val destination = File(project.rootDir.path + "/build-logic/")
         val outputDir = downloadRepository(source, destination)
 
         println("  ... files downloaded to ${outputDir.absolutePath}!")
