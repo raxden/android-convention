@@ -2,6 +2,7 @@ package task
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
+import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 import java.io.File
@@ -31,13 +32,17 @@ open class DownloadGradleDependencies : DefaultTask() {
         destination: File,
     ): File {
         val zipFile = File("${project.rootDir.path}/${repository.path.hashCode()}.zip")
-        val outputDir = destination.also { it.mkdirs() }
+        val outputDir = destination.also {
+            it.mkdirs()
+            it.deleteRecursively()
+        }
 
         repository.downloadToFile(zipFile)
 
         project.copy {
             from(project.zipTree(zipFile))
             into(outputDir)
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE
         }
 
         outputDir.listFiles()?.firstOrNull()?.run {
