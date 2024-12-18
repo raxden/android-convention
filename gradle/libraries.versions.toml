@@ -240,6 +240,8 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotech.plugin.rootcoverage.gradle.plugin", version.ref = "rootcoverage" }
+detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 
 [bundles]
 
@@ -436,3 +438,12 @@ test-logger = { id = "com.adarshr.test-logger", version.ref = "test-logger" }
 
 benManes = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
+
+# Plugins defined by this project
+android-application-conventions = { id = "android-application-conventions" }
+android-compose-application-conventions = { id = "android-compose-application-conventions" }
+android-compose-feature-conventions = { id = "android-compose-feature-conventions" }
+android-compose-library-conventions = { id = "android-compose-library-conventions" }
+android-feature-conventions = { id = "android-feature-conventions" }
+android-library-conventions = { id = "android-library-conventions" }
+android-project-conventions = { id = "android-project-conventions" }
