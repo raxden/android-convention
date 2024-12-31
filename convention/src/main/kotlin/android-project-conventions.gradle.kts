@@ -62,7 +62,7 @@ subprojects {
     dependencies {
         // This rule set provides wrappers for rules implemented by ktlint - https://ktlint.github.io/.
         // https://detekt.dev/docs/rules/formatting/dawd
-        detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting")
+        detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
     }
 }
 
