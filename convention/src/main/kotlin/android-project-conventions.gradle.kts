@@ -5,11 +5,19 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
+// Detekt info ->
+// ./gradlew detekt               - Runs a detekt analysis and complexity report on your source files
+// ./gradlew detektGenerateConfig - Generates a default detekt configuration file into your project directory.
+// ./gradlew detektBaseline       - Similar to detekt, but creates a code smell baseline. Further detekt runs will
+//                                      only feature new smells not in this list.
+// More info -> https://detekt.dev/docs/gettingstarted/gradle/
 detekt {
     // version found will be used. Override to stay on the same version.
     config = files("/config/detekt/detekt.yml")
     // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects.
     parallel = true
+    // Android: Don't create tasks for the specified build types (e.g. "release")
+    ignoredBuildTypes = listOf("release")
     // Specify the base path for file paths in the formatted reports.
     basePath = rootProject.projectDir.toString()
 }
