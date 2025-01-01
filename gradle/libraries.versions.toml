@@ -40,22 +40,22 @@ android-publish-library = "0.56.4"
 accompanist = "0.30.1"
 benManes = "0.46.0"
 coil = "2.7.0"
-commons-android = "5.0.4"
+commons-android = "5.0.19"
+commons-android-binding = "1.0.7"
+commons-android-compose = "1.0.1"
 commons-android-test = "5.0.3"
 commons-core = "5.2.0"
 commons-coroutines = "5.4.0"
-commons-coroutines-test = "5.0.3"
-commons-glide = "5.0.3"
-commons-okhttp3 = "5.0.5"
-commons-pagination-co = "5.0.3"
-commons-pagination-rx = "5.0.3"
-commons-permissions = "5.0.3"
-commons-preferences = "5.0.3"
-commons-retrofit = "5.1.1"
-commons-retrofit-rx = "5.0.3"
-commons-rx = "5.0.3"
-commons-rx-test = "5.0.3"
-commons-threeten = "5.0.3"
+commons-coroutines-test = "5.0.4"
+commons-network = "1.0.2"
+commons-network-rx = "1.0.1"
+commons-pagination-co = "5.0.4"
+commons-pagination-rx = "5.0.4"
+commons-permissions = "5.0.4"
+commons-preferences = "5.0.5"
+commons-rx = "5.0.4"
+commons-rx-test = "5.0.4"
+commons-threeten = "5.0.4"
 commons-threeten-test = "5.0.3"
 coroutines = "1.9.0"
 kotlinx-serialization-json = "1.7.3"
@@ -152,22 +152,22 @@ coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 commons-android = { module = "com.raxdenstudios:commons-android", version.ref = "commons-android" }
+commons-android-binding = { module = "com.raxdenstudios:commons-android-binding", version.ref = "commons-android-binding" }
+commons-android-compose = { module = "com.raxdenstudios:commons-android-compose", version.ref = "commons-android-compose" }
 commons-android-test = { module = "com.raxdenstudios:commons-android-test", version.ref = "commons-android-test" }
 commons-core = { module = "com.raxdenstudios:commons-core", version.ref = "commons-core" }
 commons-coroutines = { module = "com.raxdenstudios:commons-coroutines", version.ref = "commons-coroutines" }
 commons-coroutines-test = { module = "com.raxdenstudios:commons-coroutines-test", version.ref = "commons-coroutines-test" }
-commons-glide = { module = "com.raxdenstudios:commons-glide", version.ref = "commons-glide" }
-commons-okhttp3 = { module = "com.raxdenstudios:commons-okhttp3", version.ref = "commons-okhttp3" }
+commons-network = { module = "com.raxdenstudios:commons-network", version.ref = "commons-network" }
+commons-network-rx = { module = "com.raxdenstudios:commons-network-rx", version.ref = "commons-network-rx" }
 commons-pagination-co = { module = "com.raxdenstudios:commons-pagination-co", version.ref = "commons-pagination-co" }
 commons-pagination-rx = { module = "com.raxdenstudios:commons-pagination-rx", version.ref = "commons-pagination-rx" }
 commons-permissions = { module = "com.raxdenstudios:commons-permissions", version.ref = "commons-permissions" }
 commons-preferences = { module = "com.raxdenstudios:commons-preferences", version.ref = "commons-preferences" }
-commons-retrofit = { module = "com.raxdenstudios:commons-retrofit", version.ref = "commons-retrofit" }
-commons-retrofit-rx = { module = "com.raxdenstudios:commons-retrofit-rx", version.ref = "commons-retrofit-rx" }
 commons-rx = { module = "com.raxdenstudios:commons-rx", version.ref = "commons-rx" }
 commons-rx-test = { module = "com.raxdenstudios:commons-rx-test", version.ref = "commons-rx-test" }
-commons-threeten = { module = "com.raxdenstudios:commons-threeten", version.ref = "commons-threeten" }
-commons-threeten-test = { module = "com.raxdenstudios:commons-threeten-test", version.ref = "commons-threeten-test" }
+commons-threetenabp = { module = "com.raxdenstudios:commons-threeten", version.ref = "commons-threeten" }
+commons-threetenabp-test = { module = "com.raxdenstudios:commons-threeten-test", version.ref = "commons-threeten-test" }
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
@@ -240,19 +240,18 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin.plugin.serialization:org.jetbrains.kotlin.plugin.serialization.gradle.plugin", version.ref = "kotlin" }
 rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotech.plugin.rootcoverage.gradle.plugin", version.ref = "rootcoverage" }
 detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 
 [bundles]
 
 android-material = [
-    "commons-core",
-    "commons-android",
     "android-material",
     "android-play-core",
     "timber",
 ]
-androidx-compose = [
+android-compose = [
     "androidx-compose-bom",
     "androidx-compose-activity",
     "androidx-compose-material",
@@ -272,12 +271,12 @@ androidx-compose = [
     "landscapist-palette",
     "landscapist-placeholder",
 ]
-debug-androidx-compose = [
+debug-android-compose = [
     "androidx-compose-bom",
     "androidx-compose-ui-test-manifest",
     "androidx-compose-ui-tooling",
 ]
-androidx-media3 = [
+android-media3 = [
     "androidx-media", # Needed MediaSessionCompat.Token
     "androidx-media3-exoplayer",
     "androidx-media3-exoplayer-dash",
@@ -285,7 +284,7 @@ androidx-media3 = [
     "androidx-media3-ui",
     "androidx-media3-session",
 ]
-androidx-workmanager = [
+android-workmanager = [
     "androidx-work-ktx",
     "androidx-work-hilt",
     "androidx-work-hilt-compiler",
@@ -311,16 +310,13 @@ firebase = [
     "firebase-messaging",
 ]
 okhttp3 = [
-    "commons-okhttp3",
     #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
 ]
 retrofit2 = [
-    "commons-retrofit",
     "retrofit-core",
     "retrofit-gson",
-    "commons-okhttp3",
     #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
@@ -328,12 +324,9 @@ retrofit2 = [
     "gson",
 ]
 retrofit2Rx = [
-    "commons-retrofit",
-    "commons-retrofit-rx",
     "retrofit-core",
     "retrofit-gson",
     "retrofit-rxjava2",
-    "commons-okhttp3",
     #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
@@ -341,18 +334,8 @@ retrofit2Rx = [
     "gson",
 ]
 rx = [
-    "commons-rx",
     "rx-android",
     "rx-kotlin",
-]
-coroutines = [
-    "commons-coroutines",
-    "commons-pagination-co",
-    "coroutines-android",
-]
-threetenabp = [
-    "commons-threeten",
-    "threetenabp",
 ]
 test = [
     "androidx-test-core",
@@ -364,13 +347,12 @@ test = [
     "truth",
     "json", # its really necessary?
 ]
-test-android = [
-    "commons-android-test",
+test-android-material = [
     #    "mockk-android",
     "timber-test",
     #    "truth",
 ]
-test-androidx-compose = [
+test-android-compose = [
     "androidx-compose-bom",
     "androidx-compose-ui-test-junit4",
 ]
@@ -382,18 +364,15 @@ test-room = [
     "room-test",
 ]
 test-rx = [
-    "commons-rx-test",
     "rx-android",
     "rx-kotlin",
 ]
 test-coroutines = [
-    "commons-coroutines-test",
     "coroutines-test",
     "turbine",
 ]
 test-threetenabp = [
     "threetenabp",
-    "commons-threeten-test",
 ]
 test-espresso = [
     "espresso-core",
