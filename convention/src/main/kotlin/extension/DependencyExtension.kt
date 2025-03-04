@@ -11,7 +11,7 @@ fun DependencyHandlerScope.implementationBundle(
         if (dependency.name.contains("bom")) {
             add("implementation", platform(dependency))
         } else if (dependency.name.contains("compiler")) {
-            add("kapt", dependency)
+            add("ksp", dependency)
         } else {
             add("implementation", dependency)
         }
@@ -37,7 +37,7 @@ fun DependencyHandlerScope.androidTestImplementationBundle(
         if (dependency.name.contains("bom")) {
             add("androidTestImplementation", platform(dependency))
         } else if (dependency.name.contains("compiler")) {
-            add("kaptAndroidTest", dependency)
+            add("kspAndroidTest", dependency)
         } else {
             add("androidTestImplementation", dependency)
         }

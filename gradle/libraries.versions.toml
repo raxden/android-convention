@@ -44,7 +44,7 @@ commons-android = "5.0.19"
 commons-android-binding = "1.0.7"
 commons-android-compose = "1.0.1"
 commons-android-test = "5.0.3"
-commons-core = "5.2.0"
+commons-core = "5.2.2"
 commons-coroutines = "5.5.0"
 commons-coroutines-test = "5.0.4"
 commons-network = "1.0.2"
@@ -71,6 +71,7 @@ glide = "4.13.2"
 gander = "3.1.0"
 gson = "2.10.1"
 hilt = "2.52"
+ksp = "2.0.21-1.0.27"
 json = "20230227"
 landscapist = "2.4.1"
 leakcanary = "2.12"
@@ -243,6 +244,7 @@ kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-
 kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin.plugin.serialization:org.jetbrains.kotlin.plugin.serialization.gradle.plugin", version.ref = "kotlin" }
 rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotech.plugin.rootcoverage.gradle.plugin", version.ref = "rootcoverage" }
 detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
+ksp-gradlePlugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [bundles]
 
@@ -399,10 +401,11 @@ android-versioning = { id = "com.raxdenstudios.android-versioning", version.ref 
 android-publish-library = { id = "com.raxdenstudios.android-publish-library", version.ref = "android-publish-library" }
 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 detekt-formatting = { id = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }

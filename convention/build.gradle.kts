@@ -33,4 +33,5 @@ dependencies {
     implementation(libs.kotlin.serialization.gradlePlugin)
     implementation(libs.rootcoverage.gradlePlugin)
     implementation(libs.detekt.gradlePlugin)
+    implementation(libs.ksp.gradlePlugin)
 }

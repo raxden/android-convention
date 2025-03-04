@@ -5,7 +5,7 @@ import extension.versions
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
 }
 
@@ -85,10 +85,5 @@ android {
 
     kotlinOptions {
         jvmTarget = libs.versions.jdk.toString()
-    }
-
-    // Allow references to generated code -> https://developer.android.com/training/dependency-injection/hilt-android#kts
-    project.kapt {
-        correctErrorTypes = true
     }
 }
