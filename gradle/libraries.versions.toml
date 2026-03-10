@@ -1,106 +1,152 @@
 [versions]
 
+# -------------------------------------------------------------------
+# Toolchain / SDK
+# -------------------------------------------------------------------
 jdk = "17"
 minSdk = "24"
 targetSdk = "34"
-compileSdk = "34"
+compileSdk = "36"
 sourceCompatibility = "17"
 targetCompatibility = "17"
 
-androidx-core-ktx = "1.13.1"
-androidx-activity-ktx = "1.9.3"
-androidx-fragment-ktx = "1.8.4"
+# -------------------------------------------------------------------
+# Build plugins
+# -------------------------------------------------------------------
+# NOTE: If Android Studio warns "Latest supported is AGP 9.0.0", use agp = "9.0.1"
+agp = "9.1.0"
+kotlin = "2.3.10"
+ksp = "2.3.6"
+
+# -------------------------------------------------------------------
+# AndroidX
+# -------------------------------------------------------------------
+androidx-core-ktx = "1.17.0"
+androidx-activity-ktx = "1.12.4"
+androidx-fragment-ktx = "1.8.9"
 androidx-preference-ktx = "1.2.1"
-androidx-constraintlayout = "2.1.4"
-androidx-swiperefreshlayout = "1.1.0"
-androidx-browser = "1.8.0"
-androidx-lifecycle = "2.8.6"
-androidx-test-core = "2.2.0"
-androidx-test-junit-ktx = "1.2.1"
-androidx-test-rules = "1.6.1"
-androidx-test-runner = "1.6.2"
-androidx-annotation = "1.9.0"
-androidx-appcompat = "1.7.0"
-androidx-compose = "1.7.4"
-androidx-compose-activity = "1.9.3"
-androidx-compose-bom = "2024.10.00"
-androidx-compose-navigation = "2.8.3"
-androidx-compose-navigation-hilt = "1.2.0"
-androidx-compose-ui-constraintlayout = "1.0.1"
-androidx-compose-lifecycle = "2.6.0"
-androidx-media = "1.7.0"
-androidx-media3-exoplayer = "1.4.1"
+androidx-constraintlayout = "2.2.1"
+androidx-swiperefreshlayout = "1.2.0"
+androidx-browser = "1.9.0"
+androidx-lifecycle = "2.10.0"
+androidx-annotation = "1.9.1"
+androidx-appcompat = "1.7.1"
 androidx-startup = "1.2.0"
-androidx-workmanager = "2.9.1"
-androidx-workmanager-hilt  = "1.2.0"
-android-material = "1.12.0"
-android-play-core = "1.10.3"
-android-versioning = "0.56.4"
-android-publish-library = "0.56.4"
-accompanist = "0.30.1"
-benManes = "0.46.0"
-coil = "2.7.0"
-commons-android = "5.0.19"
-commons-android-binding = "1.0.7"
-commons-android-compose = "1.0.1"
-commons-android-test = "5.0.3"
-commons-core = "5.2.2"
-commons-coroutines = "5.5.0"
-commons-coroutines-test = "5.0.4"
-commons-network = "1.0.2"
-commons-network-rx = "1.0.1"
-commons-pagination-co = "5.0.4"
-commons-pagination-rx = "5.0.4"
-commons-permissions = "5.0.4"
-commons-preferences = "5.0.5"
-commons-rx = "5.0.4"
-commons-rx-test = "5.0.4"
-commons-threeten = "5.0.4"
-commons-threeten-test = "5.0.3"
-coroutines = "1.9.0"
-kotlinx-serialization-json = "1.7.3"
-espresso = "3.6.1"
-detekt = "1.22.0"
-firebase = "33.5.1"
-firebase-appdistribution = "5.0.0"
-firebase-crashlytics = "3.0.2"
-gradle-plugin = "8.7.1"
-gradle-play-publisher = "3.8.4"
+androidx-workmanager = "2.11.1"
+androidx-workmanager-hilt  = "1.3.0"
+
+androidx-test-core = "2.2.0"
+androidx-test-junit-ktx = "1.3.0"
+androidx-test-rules = "1.7.0"
+androidx-test-runner = "1.7.0"
+
+androidx-media = "1.7.1"
+androidx-media3-exoplayer = "1.9.2"
+
+# -------------------------------------------------------------------
+# Compose
+# -------------------------------------------------------------------
+androidx-compose = "1.10.4"
+androidx-compose-activity = "1.12.4"
+androidx-compose-bom = "2026.02.01"
+androidx-compose-navigation = "2.9.7"
+androidx-compose-navigation-hilt = "1.3.0"
+androidx-compose-ui-constraintlayout = "1.1.1"
+androidx-compose-lifecycle = "2.6.0"
+
+# -------------------------------------------------------------------
+# Google / Material / Firebase
+# -------------------------------------------------------------------
+android-material = "1.13.0"
+firebase = "34.10.0"
+firebase-appdistribution = "5.2.1"
+firebase-crashlytics = "3.0.6"
+play-services = "4.4.4"
 gradle-secrets = "2.0.1"
-glide = "4.13.2"
-gander = "3.1.0"
-gson = "2.10.1"
-hilt = "2.52"
-ksp = "2.0.21-1.0.27"
-json = "20230227"
-landscapist = "2.4.1"
-leakcanary = "2.12"
-kotlin = "2.0.21"
-mockk = "1.13.12"
-network-response-adapter = "5.0.0"
-nexus-publish = "1.3.0"
-okhttp3 = "4.12.0"
+
+# -------------------------------------------------------------------
+# Kotlin ecosystem
+# -------------------------------------------------------------------
+coroutines = "1.10.2"
+kotlinx-serialization-json = "1.10.0"
+
+# -------------------------------------------------------------------
+# Networking / JSON / Utils
+# -------------------------------------------------------------------
+okhttp3 = "5.3.2"
 okhttp-mockwebserver = "2.7.5"
-play-services = "4.4.2"
-rest-mock = "0.4.4"
-retrofit2 = "2.9.0"
-roboletric = "4.8.1"
-room = "2.6.1"
-rootcoverage = "1.8.0"
-rx-android = "2.1.1"
-rx-kotlin = "2.4.0"
-test-logger = "3.2.0"
-threetenabp = "1.4.6"
+retrofit2 = "3.0.0"
+network-response-adapter = "5.0.0"
+gson = "2.13.2"
+json = "20251224"
+threetenabp = "1.4.9"
+gander = "3.1.0"
 timber = "5.0.1"
-timber-test = "1.0.1"
-truth = "1.4.4"
-turbine = "0.9.0"
-versionCatalogUpdate = "0.8.1"
+gradle-play-publisher = "4.0.0"
+
+# -------------------------------------------------------------------
+# DI / DB
+# -------------------------------------------------------------------
+hilt = "2.59.2"
+room = "2.8.4"
+
+# -------------------------------------------------------------------
+# Images / UI
+# -------------------------------------------------------------------
+accompanist = "0.36.0"
+coil = "2.7.0"
+glide = "4.13.2"
+landscapist = "2.9.5"
+
+# -------------------------------------------------------------------
+# Debug / QA / Analysis
+# -------------------------------------------------------------------
+leakcanary = "2.14"
+detekt = "2.0.0-alpha.2"
+rootcoverage = "1.12.0"
+test-logger = "4.0.0"
+benManes = "0.53.0"
+versionCatalogUpdate = "1.1.0"
+nmcp = "1.4.4"
+
+# -------------------------------------------------------------------
+# Testing
+# -------------------------------------------------------------------
 junit = "4.13.2"
 junitVersion = "1.2.1"
+truth = "1.4.5"
+turbine = "1.2.1"
+mockk = "1.14.9"
+espresso = "3.7.0"
+roboletric = "4.16.1"
+rest-mock = "0.4.4"
+timber-test = "1.0.1"
+
+# -------------------------------------------------------------------
+# Your artifacts
+# -------------------------------------------------------------------
+android-versioning = "0.57.19"
+android-publish-library = "0.57.19"
+
+commons-android = "5.0.26"
+commons-android-binding = "1.0.10"
+commons-android-compose = "1.0.4"
+commons-android-test = "5.0.6"
+commons-core = "5.2.11"
+commons-coroutines = "5.5.6"
+commons-coroutines-test = "5.0.7"
+commons-network = "1.0.9"
+commons-pagination-co = "5.0.6"
+commons-permissions = "5.0.10"
+commons-preferences = "5.0.8"
+commons-threeten = "5.0.7"
+commons-threeten-test = "5.0.10"
 
 [libraries]
 
+# -------------------------------------------------------------------
+# AndroidX - Core
+# -------------------------------------------------------------------
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-ktx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment-ktx" }
@@ -109,12 +155,31 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
-androidx-test-core = { module = "androidx.arch.core:core-testing", version.ref = "androidx-test-core" }
-androidx-test-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-junit-ktx" }
-androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-rules" }
-androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test-runner" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
+
+# -------------------------------------------------------------------
+# AndroidX - Work
+# -------------------------------------------------------------------
+androidx-work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-workmanager" }
+androidx-work-hilt = { module = "androidx.hilt:hilt-work", version.ref = "androidx-workmanager-hilt" }
+androidx-work-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-workmanager-hilt" }
+androidx-work-test = { module = "androidx.work:work-testing", version.ref = "androidx-workmanager" }
+
+# -------------------------------------------------------------------
+# AndroidX - Media3
+# -------------------------------------------------------------------
+androidx-media = { module = "androidx.media:media", version.ref = "androidx-media" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3-exoplayer" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "androidx-media3-exoplayer" }
+
+# -------------------------------------------------------------------
+# Compose (BOM-based: keep versions only in BOM)
+# -------------------------------------------------------------------
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "androidx-compose-activity" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
@@ -130,21 +195,15 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", versi
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
 androidx-compose-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-compose-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
-androidx-media = { module = "androidx.media:media", version.ref = "androidx-media" }
-androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3-exoplayer" }
-androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3-exoplayer" }
-androidx-media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "androidx-media3-exoplayer" }
-androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3-exoplayer" }
-androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "androidx-media3-exoplayer" }
-androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
-androidx-work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-workmanager" }
-androidx-work-hilt = { module = "androidx.hilt:hilt-work", version.ref = "androidx-workmanager-hilt" }
-androidx-work-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-workmanager-hilt" }
-androidx-work-test = { module = "androidx.work:work-testing", version.ref = "androidx-workmanager" }
 
+# -------------------------------------------------------------------
+# Material
+# -------------------------------------------------------------------
 android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
-android-play-core = { module = "com.google.android.play:core", version.ref = "android-play-core" }
 
+# -------------------------------------------------------------------
+# Accompanist / Coil / Landscapist
+# -------------------------------------------------------------------
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 
@@ -152,6 +211,90 @@ coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
+landscapist-coil = { module = "com.github.skydoves:landscapist-coil", version.ref = "landscapist" }
+landscapist-palette = { module = "com.github.skydoves:landscapist-palette", version.ref = "landscapist" }
+landscapist-animation = { module = "com.github.skydoves:landscapist-animation", version.ref = "landscapist" }
+landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
+
+# -------------------------------------------------------------------
+# Firebase (use BOM)
+# -------------------------------------------------------------------
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging-ktx" }
+
+# -------------------------------------------------------------------
+# Hilt
+# -------------------------------------------------------------------
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+
+# -------------------------------------------------------------------
+# KotlinX
+# -------------------------------------------------------------------
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+
+# -------------------------------------------------------------------
+# Networking / JSON
+# -------------------------------------------------------------------
+okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
+okhttp3-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3" }
+okhttp-mockwebserver = { module = "com.squareup.okhttp:mockwebserver", version.ref = "okhttp-mockwebserver" }
+
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit2" }
+
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+json = { module = "org.json:json", version.ref = "json" }
+
+network-response-adapter = { module = "com.github.haroldadmin:NetworkResponseAdapter", version.ref = "network-response-adapter" }
+
+# -------------------------------------------------------------------
+# Room (KSP compiler in usage: ksp(libs.room-compiler))
+# -------------------------------------------------------------------
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-test = { module = "androidx.room:room-testing", version.ref = "room" }
+
+# -------------------------------------------------------------------
+# Debug / QA
+# -------------------------------------------------------------------
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
+
+# -------------------------------------------------------------------
+# Testing
+# -------------------------------------------------------------------
+androidx-test-core = { module = "androidx.arch.core:core-testing", version.ref = "androidx-test-core" }
+androidx-test-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-junit-ktx" }
+androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-rules" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test-runner" }
+
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
+espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espresso" }
+
+robolectric = { module = "org.robolectric:robolectric", version.ref = "roboletric" }
+
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+timber-test = { module = "net.lachlanmckee:timber-junit-rule", version.ref = "timber-test" }
+restmock = { module = "com.github.andrzejchm.RESTMock:android", version.ref = "rest-mock" }
+
+# -------------------------------------------------------------------
+# Logging / Misc
+# -------------------------------------------------------------------
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
+
+# -------------------------------------------------------------------
+# Your published libs
+# -------------------------------------------------------------------
 commons-android = { module = "com.raxdenstudios:commons-android", version.ref = "commons-android" }
 commons-android-binding = { module = "com.raxdenstudios:commons-android-binding", version.ref = "commons-android-binding" }
 commons-android-compose = { module = "com.raxdenstudios:commons-android-compose", version.ref = "commons-android-compose" }
@@ -160,99 +303,106 @@ commons-core = { module = "com.raxdenstudios:commons-core", version.ref = "commo
 commons-coroutines = { module = "com.raxdenstudios:commons-coroutines", version.ref = "commons-coroutines" }
 commons-coroutines-test = { module = "com.raxdenstudios:commons-coroutines-test", version.ref = "commons-coroutines-test" }
 commons-network = { module = "com.raxdenstudios:commons-network", version.ref = "commons-network" }
-commons-network-rx = { module = "com.raxdenstudios:commons-network-rx", version.ref = "commons-network-rx" }
 commons-pagination-co = { module = "com.raxdenstudios:commons-pagination-co", version.ref = "commons-pagination-co" }
-commons-pagination-rx = { module = "com.raxdenstudios:commons-pagination-rx", version.ref = "commons-pagination-rx" }
 commons-permissions = { module = "com.raxdenstudios:commons-permissions", version.ref = "commons-permissions" }
 commons-preferences = { module = "com.raxdenstudios:commons-preferences", version.ref = "commons-preferences" }
-commons-rx = { module = "com.raxdenstudios:commons-rx", version.ref = "commons-rx" }
-commons-rx-test = { module = "com.raxdenstudios:commons-rx-test", version.ref = "commons-rx-test" }
 commons-threetenabp = { module = "com.raxdenstudios:commons-threeten", version.ref = "commons-threeten" }
 commons-threetenabp-test = { module = "com.raxdenstudios:commons-threeten-test", version.ref = "commons-threeten-test" }
 
-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
-
-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espresso" }
-
-firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
-firebase-messaging = { module = "com.google.firebase:firebase-messaging-ktx" }
-
-gander-debug = { module = "com.ashokvarma.android:gander-imdb", version.ref = "gander" }
-gander-release = { module = "com.ashokvarma.android:gander-no-op", version.ref = "gander" }
-
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
-
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
-hilt-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
-
-json = { module = "org.json:json", version.ref = "json" }
-
-landscapist-coil = { module = "com.github.skydoves:landscapist-coil", version.ref = "landscapist" }
-landscapist-palette = { module = "com.github.skydoves:landscapist-palette", version.ref = "landscapist" }
-landscapist-animation = { module = "com.github.skydoves:landscapist-animation", version.ref = "landscapist" }
-landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
-
-leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
-
-mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
-
-network-response-adapter = { module = "com.github.haroldadmin:NetworkResponseAdapter", version.ref = "network-response-adapter" }
-
-okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
-okhttp3-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3" }
-okhttp-mockwebserver = { module = "com.squareup.okhttp:mockwebserver", version.ref = "okhttp-mockwebserver" }
-
-restmock = { module = "com.github.andrzejchm.RESTMock:android", version.ref = "rest-mock" }
-
-retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
-retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit2" }
-retrofit-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofit2" }
-
-robolectric = { module = "org.robolectric:robolectric", version.ref = "roboletric" }
-
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-room-test = { module = "androidx.room:room-testing", version.ref = "room" }
-
-rx-android = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rx-android" }
-rx-kotlin = { module = "io.reactivex.rxjava2:rxkotlin", version.ref = "rx-kotlin" }
-
-threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
-
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-timber-test = { module = "net.lachlanmckee:timber-junit-rule", version.ref = "timber-test" }
-
-truth = { module = "com.google.truth:truth", version.ref = "truth" }
-
-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-
-# Dependencies of the included build-logic
-android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin" }
+# -------------------------------------------------------------------
+# Build-logic / plugin classpath dependencies (included build)
+# -------------------------------------------------------------------
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization-gradlePlugin = { module = "org.jetbrains.kotlin.plugin.serialization:org.jetbrains.kotlin.plugin.serialization.gradle.plugin", version.ref = "kotlin" }
-rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotech.plugin.rootcoverage.gradle.plugin", version.ref = "rootcoverage" }
-detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 ksp-gradlePlugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+
+rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotech.plugin.rootcoverage.gradle.plugin", version.ref = "rootcoverage" }
+
+# Detekt 2.x artifacts
+detekt-gradlePlugin = { module = "dev.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+detekt-formatting = { module = "dev.detekt:detekt-formatting", version.ref = "detekt" }
+
+
+[plugins]
+
+# -------------------------------------------------------------------
+# Android
+# -------------------------------------------------------------------
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+
+# -------------------------------------------------------------------
+# Kotlin
+# -------------------------------------------------------------------
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# -------------------------------------------------------------------
+# KSP
+# -------------------------------------------------------------------
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# -------------------------------------------------------------------
+# Firebase / Google
+# -------------------------------------------------------------------
+firebase-appdistribution = { id = "com.google.firebase.appdistribution", version.ref = "firebase-appdistribution" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
+play-services = { id = "com.google.gms.google-services", version.ref = "play-services" }
+gradle-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "gradle-secrets" }
+
+# -------------------------------------------------------------------
+# Hilt
+# -------------------------------------------------------------------
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+# -------------------------------------------------------------------
+# Quality
+# -------------------------------------------------------------------
+# Detekt 2.x uses plugin id "dev.detekt"
+detekt = { id = "dev.detekt", version.ref = "detekt" }
+
+rootcoverage = { id = "nl.neotech.plugin.rootcoverage", version.ref = "rootcoverage" }
+test-logger = { id = "com.adarshr.test-logger", version.ref = "test-logger" }
+
+# -------------------------------------------------------------------
+# Publishing / tooling
+# -------------------------------------------------------------------
+android-versioning = { id = "com.raxdenstudios.android-versioning", version.ref = "android-versioning" }
+android-publish-library = { id = "com.raxdenstudios.android-publish-library", version.ref = "android-publish-library" }
+
+nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
+nmcp = { id = "com.gradleup.nmcp", version.ref = "nmcp" }
+gradle-play-publisher = { id = "com.github.triplet.play", version.ref = "gradle-play-publisher" }
+
+benManes = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
+versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
+
+# -------------------------------------------------------------------
+# Plugins defined by this project
+# -------------------------------------------------------------------
+android-application-conventions = { id = "android-application-conventions" }
+android-compose-application-conventions = { id = "android-compose-application-conventions" }
+android-compose-feature-conventions = { id = "android-compose-feature-conventions" }
+android-compose-library-conventions = { id = "android-compose-library-conventions" }
+android-feature-conventions = { id = "android-feature-conventions" }
+android-library-conventions = { id = "android-library-conventions" }
+android-project-conventions = { id = "android-project-conventions" }
+
 
 [bundles]
 
+# -------------------------------------------------------------------
+# Bundles
+# -------------------------------------------------------------------
 android-material = [
     "android-material",
-    "android-play-core",
     "timber",
 ]
+
 android-compose = [
     "androidx-compose-bom",
     "androidx-compose-activity",
@@ -273,11 +423,13 @@ android-compose = [
     "landscapist-palette",
     "landscapist-placeholder",
 ]
+
 debug-android-compose = [
     "androidx-compose-bom",
     "androidx-compose-ui-test-manifest",
     "androidx-compose-ui-tooling",
 ]
+
 android-media3 = [
     "androidx-media", # Needed MediaSessionCompat.Token
     "androidx-media3-exoplayer",
@@ -286,59 +438,51 @@ android-media3 = [
     "androidx-media3-ui",
     "androidx-media3-session",
 ]
+
 android-workmanager = [
     "androidx-work-ktx",
     "androidx-work-hilt",
     "androidx-work-hilt-compiler",
 ]
+
 coil-compose = [
     "coil",
     "coil-svg",
     "coil-compose",
 ]
+
 hilt = [
     "hilt-android",
     "hilt-compiler",
 ]
+
 room = [
     "room-ktx",
     "room-runtime",
     "room-compiler",
 ]
+
 firebase = [
     "firebase-bom",
     "firebase-analytics",
     "firebase-crashlytics",
     "firebase-messaging",
 ]
+
 okhttp3 = [
-    #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
 ]
+
 retrofit2 = [
     "retrofit-core",
     "retrofit-gson",
-    #    "okhttp3-bom",
     "okhttp3",
     "okhttp3-logging-interceptor",
     "network-response-adapter",
     "gson",
 ]
-retrofit2Rx = [
-    "retrofit-core",
-    "retrofit-gson",
-    "retrofit-rxjava2",
-    #    "okhttp3-bom",
-    "okhttp3",
-    "okhttp3-logging-interceptor",
-    "network-response-adapter",
-    "gson",
-]
-rx = [
-    "rx-android",
-    "rx-kotlin",
-]
+
 test = [
     "androidx-test-core",
     "androidx-test-junit-ktx",
@@ -347,85 +491,43 @@ test = [
     "mockk-android",
     "timber-test",
     "truth",
-    "json", # its really necessary?
+    "json",
 ]
+
 test-android-material = [
-    #    "mockk-android",
     "timber-test",
-    #    "truth",
 ]
+
 test-android-compose = [
     "androidx-compose-bom",
     "androidx-compose-ui-test-junit4",
 ]
+
 test-hilt = [
     "hilt-test",
     "hilt-compiler",
 ]
+
 test-room = [
     "room-test",
 ]
-test-rx = [
-    "rx-android",
-    "rx-kotlin",
-]
+
 test-coroutines = [
     "coroutines-test",
     "turbine",
 ]
+
 test-threetenabp = [
     "threetenabp",
 ]
+
 test-espresso = [
     "espresso-core",
     "espresso-contrib",
     "espresso-intents"
 ]
+
 test-mockwebserver = [
     "restmock",
     "okhttp-mockwebserver",
 ]
-
-[plugins]
-
-android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
-android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
-
-firebase-appdistribution = { id = "com.google.firebase.appdistribution", version.ref = "firebase-appdistribution" }
-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-play-services = { id = "com.google.gms.google-services", version.ref = "play-services" }
-gradle-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "gradle-secrets" }
-
-android-versioning = { id = "com.raxdenstudios.android-versioning", version.ref = "android-versioning" }
-android-publish-library = { id = "com.raxdenstudios.android-publish-library", version.ref = "android-publish-library" }
-
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-detekt-formatting = { id = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-
-rootcoverage = { id = "nl.neotech.plugin.rootcoverage", version.ref = "rootcoverage" }
-
-nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish" }
-
-gradle-play-publisher = { id = "com.github.triplet.play", version.ref = "gradle-play-publisher" }
-
-test-logger = { id = "com.adarshr.test-logger", version.ref = "test-logger" }
-
-benManes = { id = "com.github.ben-manes.versions", version.ref = "benManes" }
-versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
-
-# Plugins defined by this project
-android-application-conventions = { id = "android-application-conventions" }
-android-compose-application-conventions = { id = "android-compose-application-conventions" }
-android-compose-feature-conventions = { id = "android-compose-feature-conventions" }
-android-compose-library-conventions = { id = "android-compose-library-conventions" }
-android-feature-conventions = { id = "android-feature-conventions" }
-android-library-conventions = { id = "android-library-conventions" }
-android-project-conventions = { id = "android-project-conventions" }

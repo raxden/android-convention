@@ -3,7 +3,6 @@ import extension.versions
 
 plugins {
     id("com.android.library")
-    id("kotlin-android")
     id("com.google.devtools.ksp")
     id("kotlin-parcelize")
 }
@@ -19,7 +18,11 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.minSdk
-        targetSdk = libs.versions.targetSdk // needed for instrumental tests
+    }
+
+    testOptions {
+        // used for instrumental tests
+        targetSdk = libs.versions.targetSdk
     }
 
     buildTypes {
@@ -40,12 +43,14 @@ android {
 //            excludes.add("META-INF/*.kotlin_module")
         }
     }
+}
 
-    project.kotlin {
-        jvmToolchain(jdkVersion = libs.versions.jdk.asInt())
-    }
+kotlin {
+    jvmToolchain(jdkVersion = libs.versions.jdk.asInt())
+}
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jdk.toString()
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.asInt()))
     }
 }

@@ -4,7 +4,6 @@ import extension.versions
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     id("com.google.devtools.ksp")
     id("kotlin-parcelize")
 }
@@ -64,6 +63,7 @@ android {
             // Proguard configuration
             isMinifyEnabled = true
             isShrinkResources = true
+
             proguardFiles(
                 "proguard-android-optimize.txt",
                 "proguard-rules.pro"
@@ -78,12 +78,14 @@ android {
             excludes.add("META-INF/*.kotlin_module")
         }
     }
+}
 
-    project.kotlin {
-        jvmToolchain(jdkVersion = libs.versions.jdk.asInt())
-    }
+kotlin {
+    jvmToolchain(jdkVersion = libs.versions.jdk.asInt())
+}
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jdk.toString()
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.asInt()))
     }
 }
