@@ -4,8 +4,8 @@
 # Toolchain / SDK
 # -------------------------------------------------------------------
 jdk = "17"
-minSdk = "24"
-targetSdk = "34"
+minSdk = "26"
+targetSdk = "36"
 compileSdk = "36"
 sourceCompatibility = "17"
 targetCompatibility = "17"
@@ -21,8 +21,8 @@ ksp = "2.3.6"
 # -------------------------------------------------------------------
 # AndroidX
 # -------------------------------------------------------------------
-androidx-core-ktx = "1.17.0"
-androidx-activity-ktx = "1.12.4"
+androidx-core-ktx = "1.18.0"
+androidx-activity-ktx = "1.13.0"
 androidx-fragment-ktx = "1.8.9"
 androidx-preference-ktx = "1.2.1"
 androidx-constraintlayout = "2.2.1"
@@ -35,24 +35,23 @@ androidx-startup = "1.2.0"
 androidx-workmanager = "2.11.1"
 androidx-workmanager-hilt  = "1.3.0"
 
-androidx-test-core = "2.2.0"
+androidx-arch-core-testing = "2.2.0"
 androidx-test-junit-ktx = "1.3.0"
 androidx-test-rules = "1.7.0"
 androidx-test-runner = "1.7.0"
 
-androidx-media = "1.7.1"
-androidx-media3-exoplayer = "1.9.2"
+androidx-media3 = "1.7.1"
+androidx-media3-exoplayer = "1.9.3"
 
 # -------------------------------------------------------------------
 # Compose
 # -------------------------------------------------------------------
-androidx-compose = "1.10.4"
-androidx-compose-activity = "1.12.4"
-androidx-compose-bom = "2026.02.01"
+androidx-compose-bom = "2026.03.00"
+androidx-compose-activity = "1.13.0"
 androidx-compose-navigation = "2.9.7"
 androidx-compose-navigation-hilt = "1.3.0"
 androidx-compose-ui-constraintlayout = "1.1.1"
-androidx-compose-lifecycle = "2.6.0"
+androidx-compose-lifecycle = "2.10.0"
 
 # -------------------------------------------------------------------
 # Google / Material / Firebase
@@ -61,7 +60,9 @@ android-material = "1.13.0"
 firebase = "34.10.0"
 firebase-appdistribution = "5.2.1"
 firebase-crashlytics = "3.0.6"
-play-services = "4.4.4"
+google-services-plugin = "4.4.4"
+play-services-location = "21.3.0"
+play-review = "2.0.2"
 gradle-secrets = "2.0.1"
 
 # -------------------------------------------------------------------
@@ -74,13 +75,12 @@ kotlinx-serialization-json = "1.10.0"
 # Networking / JSON / Utils
 # -------------------------------------------------------------------
 okhttp3 = "5.3.2"
-okhttp-mockwebserver = "2.7.5"
 retrofit2 = "3.0.0"
 network-response-adapter = "5.0.0"
 gson = "2.13.2"
 json = "20251224"
 threetenabp = "1.4.9"
-gander = "3.1.0"
+chucker = "4.2.0"
 timber = "5.0.1"
 gradle-play-publisher = "4.0.0"
 
@@ -88,6 +88,7 @@ gradle-play-publisher = "4.0.0"
 # DI / DB
 # -------------------------------------------------------------------
 hilt = "2.59.2"
+koin = "4.2.1"
 room = "2.8.4"
 
 # -------------------------------------------------------------------
@@ -97,6 +98,7 @@ accompanist = "0.36.0"
 coil = "2.7.0"
 glide = "4.13.2"
 landscapist = "2.9.5"
+compose-charts = "0.0.13"
 
 # -------------------------------------------------------------------
 # Debug / QA / Analysis
@@ -112,35 +114,23 @@ nmcp = "1.4.4"
 # -------------------------------------------------------------------
 # Testing
 # -------------------------------------------------------------------
-junit = "4.13.2"
-junitVersion = "1.2.1"
 truth = "1.4.5"
 turbine = "1.2.1"
 mockk = "1.14.9"
 espresso = "3.7.0"
-roboletric = "4.16.1"
+robolectric = "4.16.1"
 rest-mock = "0.4.4"
 timber-test = "1.0.1"
 
 # -------------------------------------------------------------------
 # Your artifacts
 # -------------------------------------------------------------------
-android-versioning = "0.57.19"
-android-publish-library = "0.57.19"
+android-versioning = "0.57.30"
+android-publish-library = "0.57.30"
+android-publish-platform = "0.57.30"
 
-commons-android = "5.0.26"
-commons-android-binding = "1.0.10"
-commons-android-compose = "1.0.4"
-commons-android-test = "5.0.6"
-commons-core = "5.2.11"
-commons-coroutines = "5.5.6"
-commons-coroutines-test = "5.0.7"
-commons-network = "1.0.9"
-commons-pagination-co = "5.0.6"
-commons-permissions = "5.0.10"
-commons-preferences = "5.0.8"
-commons-threeten = "5.0.7"
-commons-threeten-test = "5.0.10"
+commons-bom = "1.3.3"
+junit-jupiter = "5.10.0"
 
 [libraries]
 
@@ -170,7 +160,7 @@ androidx-work-test = { module = "androidx.work:work-testing", version.ref = "and
 # -------------------------------------------------------------------
 # AndroidX - Media3
 # -------------------------------------------------------------------
-androidx-media = { module = "androidx.media:media", version.ref = "androidx-media" }
+androidx-media = { module = "androidx.media:media", version.ref = "androidx-media3" }
 androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3-exoplayer" }
 androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3-exoplayer" }
 androidx-media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "androidx-media3-exoplayer" }
@@ -182,8 +172,7 @@ androidx-media3-session = { module = "androidx.media3:media3-session", version.r
 # -------------------------------------------------------------------
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "androidx-compose-activity" }
-androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
-androidx-compose-material = { module = "androidx.compose.material:material" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-compose-navigation" }
 androidx-compose-navigation-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-compose-navigation-hilt" }
@@ -191,10 +180,10 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-ui-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "androidx-compose-ui-constraintlayout" }
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
-androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
-androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
-androidx-compose-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
-androidx-compose-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-compose-lifecycle" }
+androidx-compose-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-compose-lifecycle" }
 
 # -------------------------------------------------------------------
 # Material
@@ -216,13 +205,21 @@ landscapist-palette = { module = "com.github.skydoves:landscapist-palette", vers
 landscapist-animation = { module = "com.github.skydoves:landscapist-animation", version.ref = "landscapist" }
 landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
 
+compose-charts = { module = "io.github.ehsannarmani:compose-charts", version.ref = "compose-charts" }
+
 # -------------------------------------------------------------------
 # Firebase (use BOM)
 # -------------------------------------------------------------------
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
-firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
-firebase-messaging = { module = "com.google.firebase:firebase-messaging-ktx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
+
+# -------------------------------------------------------------------
+# Play services
+# -------------------------------------------------------------------
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "play-services-location" }
+play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "play-review" }
 
 # -------------------------------------------------------------------
 # Hilt
@@ -232,9 +229,21 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 hilt-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 
 # -------------------------------------------------------------------
+# Koin
+# -------------------------------------------------------------------
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+koin-startup = { module = "io.insert-koin:koin-androidx-startup", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koin" }
+
+# -------------------------------------------------------------------
 # KotlinX
 # -------------------------------------------------------------------
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
@@ -243,7 +252,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 # -------------------------------------------------------------------
 okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
 okhttp3-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3" }
-okhttp-mockwebserver = { module = "com.squareup.okhttp:mockwebserver", version.ref = "okhttp-mockwebserver" }
+okhttp3-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp3" }
 
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit2" }
@@ -256,9 +265,9 @@ network-response-adapter = { module = "com.github.haroldadmin:NetworkResponseAda
 # -------------------------------------------------------------------
 # Room (KSP compiler in usage: ksp(libs.room-compiler))
 # -------------------------------------------------------------------
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-test = { module = "androidx.room:room-testing", version.ref = "room" }
 
 # -------------------------------------------------------------------
@@ -269,7 +278,7 @@ leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.re
 # -------------------------------------------------------------------
 # Testing
 # -------------------------------------------------------------------
-androidx-test-core = { module = "androidx.arch.core:core-testing", version.ref = "androidx-test-core" }
+androidx-arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidx-arch-core-testing" }
 androidx-test-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-junit-ktx" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-rules" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test-runner" }
@@ -278,36 +287,41 @@ espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref =
 espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
 espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espresso" }
 
-robolectric = { module = "org.robolectric:robolectric", version.ref = "roboletric" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 timber-test = { module = "net.lachlanmckee:timber-junit-rule", version.ref = "timber-test" }
 restmock = { module = "com.github.andrzejchm.RESTMock:android", version.ref = "rest-mock" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.10.0" }
 
 # -------------------------------------------------------------------
 # Logging / Misc
 # -------------------------------------------------------------------
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
+chucker-debug = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
+chucker-release = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "chucker" }
 
 # -------------------------------------------------------------------
 # Your published libs
 # -------------------------------------------------------------------
-commons-android = { module = "com.raxdenstudios:commons-android", version.ref = "commons-android" }
-commons-android-binding = { module = "com.raxdenstudios:commons-android-binding", version.ref = "commons-android-binding" }
-commons-android-compose = { module = "com.raxdenstudios:commons-android-compose", version.ref = "commons-android-compose" }
-commons-android-test = { module = "com.raxdenstudios:commons-android-test", version.ref = "commons-android-test" }
-commons-core = { module = "com.raxdenstudios:commons-core", version.ref = "commons-core" }
-commons-coroutines = { module = "com.raxdenstudios:commons-coroutines", version.ref = "commons-coroutines" }
-commons-coroutines-test = { module = "com.raxdenstudios:commons-coroutines-test", version.ref = "commons-coroutines-test" }
-commons-network = { module = "com.raxdenstudios:commons-network", version.ref = "commons-network" }
-commons-pagination-co = { module = "com.raxdenstudios:commons-pagination-co", version.ref = "commons-pagination-co" }
-commons-permissions = { module = "com.raxdenstudios:commons-permissions", version.ref = "commons-permissions" }
-commons-preferences = { module = "com.raxdenstudios:commons-preferences", version.ref = "commons-preferences" }
-commons-threetenabp = { module = "com.raxdenstudios:commons-threeten", version.ref = "commons-threeten" }
-commons-threetenabp-test = { module = "com.raxdenstudios:commons-threeten-test", version.ref = "commons-threeten-test" }
+commons-bom = { module = "com.raxdenstudios:commons-bom", version.ref = "commons-bom" }
+commons-android = { module = "com.raxdenstudios:commons-android" }
+commons-android-binding = { module = "com.raxdenstudios:commons-android-binding" }
+commons-android-compose = { module = "com.raxdenstudios:commons-android-compose" }
+commons-android-test = { module = "com.raxdenstudios:commons-android-test" }
+commons-core = { module = "com.raxdenstudios:commons-core" }
+commons-coroutines = { module = "com.raxdenstudios:commons-coroutines" }
+commons-coroutines-test = { module = "com.raxdenstudios:commons-coroutines-test" }
+commons-network = { module = "com.raxdenstudios:commons-network" }
+commons-pagination-co = { module = "com.raxdenstudios:commons-pagination-co" }
+commons-permissions = { module = "com.raxdenstudios:commons-permissions" }
+commons-preferences = { module = "com.raxdenstudios:commons-preferences" }
+commons-threetenabp = { module = "com.raxdenstudios:commons-threetenabp" }
+commons-threetenabp-test = { module = "com.raxdenstudios:commons-threetenabp-test" }
 
 # -------------------------------------------------------------------
 # Build-logic / plugin classpath dependencies (included build)
@@ -324,7 +338,6 @@ rootcoverage-gradlePlugin = { module = "nl.neotech.plugin.rootcoverage:nl.neotec
 detekt-gradlePlugin = { module = "dev.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 detekt-formatting = { module = "dev.detekt:detekt-formatting", version.ref = "detekt" }
 
-
 [plugins]
 
 # -------------------------------------------------------------------
@@ -336,10 +349,14 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 # -------------------------------------------------------------------
 # Kotlin
 # -------------------------------------------------------------------
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# -------------------------------------------------------------------
+# Room
+# -------------------------------------------------------------------
+room = { id = "androidx.room", version.ref = "room" }
 
 # -------------------------------------------------------------------
 # KSP
@@ -351,7 +368,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 # -------------------------------------------------------------------
 firebase-appdistribution = { id = "com.google.firebase.appdistribution", version.ref = "firebase-appdistribution" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
-play-services = { id = "com.google.gms.google-services", version.ref = "play-services" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services-plugin" }
 gradle-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "gradle-secrets" }
 
 # -------------------------------------------------------------------
@@ -373,6 +390,7 @@ test-logger = { id = "com.adarshr.test-logger", version.ref = "test-logger" }
 # -------------------------------------------------------------------
 android-versioning = { id = "com.raxdenstudios.android-versioning", version.ref = "android-versioning" }
 android-publish-library = { id = "com.raxdenstudios.android-publish-library", version.ref = "android-publish-library" }
+android-publish-platform = { id = "com.raxdenstudios.android-publish-platform", version.ref = "android-publish-platform" }
 
 nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
 nmcp = { id = "com.gradleup.nmcp", version.ref = "nmcp" }
@@ -404,9 +422,10 @@ android-material = [
 ]
 
 android-compose = [
+    "androidx-core-ktx",
     "androidx-compose-bom",
     "androidx-compose-activity",
-    "androidx-compose-material",
+    "androidx-compose-material3",
     "androidx-compose-material-icons-extended",
     "androidx-compose-navigation",
     "kotlinx-serialization-json",
@@ -456,6 +475,13 @@ hilt = [
     "hilt-compiler",
 ]
 
+koin = [
+    "koin-android",
+    "koin-compose",
+    "koin-workmanager",
+    "koin-compose-viewmodel",
+]
+
 room = [
     "room-ktx",
     "room-runtime",
@@ -484,10 +510,12 @@ retrofit2 = [
 ]
 
 test = [
-    "androidx-test-core",
+    "androidx-arch-core-testing",
     "androidx-test-junit-ktx",
     "androidx-test-rules",
     "androidx-test-runner",
+    "junit-jupiter",
+    "junit-platform-launcher",
     "mockk-android",
     "timber-test",
     "truth",
@@ -529,5 +557,5 @@ test-espresso = [
 
 test-mockwebserver = [
     "restmock",
-    "okhttp-mockwebserver",
+    "okhttp3-mockwebserver",
 ]
