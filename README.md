@@ -35,8 +35,7 @@ android-convention/
 From your project's root directory:
 
 ```sh
-git submodule add git@github.com:raxden/android-convention.git
-git mv android-convention build-logic
+git submodule add git@github.com:raxden/android-convention.git build-logic
 ```
 
 ### 2. Configure `settings.gradle.kts`
@@ -45,136 +44,203 @@ git mv android-convention build-logic
 pluginManagement {
     includeBuild("build-logic")
     repositories {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
         gradlePluginPortal()
     }
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
     versionCatalogs {
         create("libs") {
-            from(files("build-logic/gradle/libraries.versions.toml"))
+            from(files("./gradle/libraries.versions.toml"))
         }
     }
 }
 ```
 
-> The `settings.gradle.kts` inside `build-logic` will automatically look for the version catalog first in the parent project's `gradle/` folder, and fall back to its own `gradle/` folder.
+> `build-logic/settings.gradle.kts` resolves the version catalog automatically: it first looks for `../gradle/libraries.versions.toml` (i.e. the host project's catalog), and falls back to its own `gradle/libraries.versions.toml`. This means **the host project's `gradle/` catalog is the source of truth** and `build-logic` picks it up without any extra configuration.
 
-## Plugins
+### 3. Apply `android-project-conventions` in the root `build.gradle.kts`
 
-### Base plugins
-
-| Plugin | Description |
-|--------|-------------|
-| `android-application-conventions` | Android application with signing configs, build types, proguard, and KSP |
-| `android-library-conventions` | Android library with build types and coverage |
-| `android-feature-conventions` | Extends `android-library-conventions` |
-| `android-project-conventions` | Root project: coverage reports via `rootCoverage` |
-
-### Compose plugins
-
-| Plugin | Description |
-|--------|-------------|
-| `android-compose-application-conventions` | Extends `android-application-conventions` with Compose + serialization |
-| `android-compose-library-conventions` | Extends `android-library-conventions` with Compose |
-| `android-compose-feature-conventions` | Extends `android-compose-library-conventions` |
+```kotlin
+plugins {
+    alias(libs.plugins.android.project.conventions)
+    // other plugins with `apply false` ...
+}
+```
 
 ---
 
+## Plugins
+
+### Overview
+
+| Plugin | Alias | Use for |
+|--------|-------|---------|
+| `android-application-conventions` | `libs.plugins.android.application.conventions` | `:app` module (no Compose) |
+| `android-compose-application-conventions` | `libs.plugins.android.compose.application.conventions` | `:app` module with Compose |
+| `android-library-conventions` | `libs.plugins.android.library.conventions` | Standalone library modules |
+| `android-feature-conventions` | `libs.plugins.android.feature.conventions` | Feature modules (no Compose) |
+| `android-compose-library-conventions` | `libs.plugins.android.compose.library.conventions` | Library modules with Compose |
+| `android-compose-feature-conventions` | `libs.plugins.android.compose.feature.conventions` | Feature modules with Compose |
+| `android-project-conventions` | `libs.plugins.android.project.conventions` | Root project only |
+
+### Plugin inheritance
+
+```
+android-application-conventions
+└── android-compose-application-conventions
+
+android-library-conventions
+├── android-feature-conventions
+└── android-compose-library-conventions
+    └── android-compose-feature-conventions
+```
+
+---
+
+## Usage by module type
+
+### `:app` — Application with Compose
+
+The most common case. Applies signing, build types, Compose, and KotlinX Serialization.
+
+```kotlin
+// app/build.gradle.kts
+plugins {
+    alias(libs.plugins.android.compose.application.conventions)
+}
+
+android {
+    namespace = "com.example.myapp"
+
+    defaultConfig {
+        applicationId = "com.example.myapp"
+    }
+}
+```
+
+### `:core:*` — Library module (no Compose)
+
+For modules that provide utilities, networking, data, etc. without a UI layer.
+
+```kotlin
+// core/network/build.gradle.kts
+plugins {
+    alias(libs.plugins.android.library.conventions)
+}
+
+android {
+    namespace = "com.example.app.core.network"
+}
+```
+
+### `:feature:*` or `:data:*` — Feature / data module with Compose
+
+For feature and data modules that include Compose UI or depend on Compose infrastructure.
+
+```kotlin
+// feature/home/build.gradle.kts
+plugins {
+    alias(libs.plugins.android.compose.feature.conventions)
+}
+
+android {
+    namespace = "com.example.app.feature.home"
+}
+```
+
+### Root `build.gradle.kts`
+
+Configures coverage reports and `project-report` across all subprojects.
+
+```kotlin
+// build.gradle.kts
+plugins {
+    alias(libs.plugins.android.project.conventions)
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    // ...
+}
+```
+
+---
+
+## What each plugin configures
+
 ### `android-application-conventions`
 
-For the `:app` module. Includes:
-- `com.android.application`, `ksp`, `kotlin-parcelize`
-- Signing configs (`debug` / `release`)
-- `debug` build type with unit test and Android test coverage enabled
-- `release` build type with minify and resource shrinking
-
-```kotlin
-plugins {
-    id("android-application-conventions")
-}
-```
-
-### `android-library-conventions`
-
-For standalone library modules. Includes:
-- `com.android.library`, `ksp`, `kotlin-parcelize`
-- `debug` build type with coverage enabled
-
-```kotlin
-plugins {
-    id("android-library-conventions")
-}
-```
-
-### `android-feature-conventions`
-
-For feature modules. Thin wrapper around `android-library-conventions`.
-
-```kotlin
-plugins {
-    id("android-feature-conventions")
-}
-```
+- Applies: `com.android.application`, `com.google.devtools.ksp`, `kotlin-parcelize`
+- `compileSdk`, `minSdk`, `targetSdk` from version catalog
+- `debug` signing config using `config/debug.keystore`
+- `release` signing config loaded from `signing.release.properties`
+- `debug`: minify disabled, unit test and Android test coverage enabled
+- `release`: minify + resource shrinking enabled, proguard configured
+- Java/Kotlin toolchain set from version catalog
 
 ### `android-compose-application-conventions`
 
-For the `:app` module with Jetpack Compose. Extends `android-application-conventions` and adds:
+Extends `android-application-conventions` and adds:
 - `org.jetbrains.kotlin.plugin.compose`
 - `org.jetbrains.kotlin.plugin.serialization`
+- `buildFeatures.compose = true`
 - `kotlinx-serialization-json` dependency
 
-```kotlin
-plugins {
-    id("android-compose-application-conventions")
-}
-```
+### `android-library-conventions`
+
+- Applies: `com.android.library`, `com.google.devtools.ksp`, `kotlin-parcelize`
+- `compileSdk`, `minSdk` from version catalog
+- `debug`: coverage enabled (`enableUnitTestCoverage`, `enableAndroidTestCoverage`)
+- Java/Kotlin toolchain set from version catalog
+
+### `android-feature-conventions`
+
+Thin wrapper — applies `android-library-conventions`. Use it to semantically distinguish feature modules from generic libraries.
 
 ### `android-compose-library-conventions`
 
-For library modules with Compose. Extends `android-library-conventions` and enables:
+Extends `android-library-conventions` and adds:
 - `org.jetbrains.kotlin.plugin.compose`
 - `buildFeatures.compose = true`
 
-```kotlin
-plugins {
-    id("android-compose-library-conventions")
-}
-```
-
 ### `android-compose-feature-conventions`
 
-For feature modules with Compose. Thin wrapper around `android-compose-library-conventions`.
-
-```kotlin
-plugins {
-    id("android-compose-feature-conventions")
-}
-```
+Thin wrapper — applies `android-compose-library-conventions`. Use it for feature modules that include Compose UI.
 
 ### `android-project-conventions`
 
-For the root project. Configures:
-- Code coverage aggregation via [`rootcoverage`](https://github.com/NeoTech-Software/Android-Root-Coverage-Plugin)
+Root-project only. Configures:
+- Code coverage aggregation via [`rootcoverage`](https://github.com/NeoTech-Software/Android-Root-Coverage-Plugin) (HTML + XML reports, unit tests + Android tests)
 - `project-report` plugin on all subprojects
 - `DownloadGradleDependencies` task
 
-```kotlin
-plugins {
-    id("android-project-conventions")
-}
-```
+---
 
 ## Signing
 
-The `android-application-conventions` plugin expects:
-- **Debug**: `config/debug.keystore` at the root of your project (standard Android debug keystore).
-- **Release**: a `signing.release.properties` file (or equivalent) at the root of your project with the following keys:
+`android-application-conventions` expects the following files at the root of the **host project**:
+
+| Build type | File |
+|------------|------|
+| `debug` | `config/debug.keystore` (standard Android debug keystore) |
+| `release` | `config/signing.release.properties` |
+
+`signing.release.properties` format:
 
 ```properties
-storeFile=path/to/release.keystore
+storeFile=config/release.keystore
 storePassword=your_store_password
 keyAlias=your_key_alias
 keyPassword=your_key_password
