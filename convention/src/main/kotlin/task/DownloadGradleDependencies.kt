@@ -37,9 +37,13 @@ open class DownloadGradleDependencies : DefaultTask() {
         }
 
         repository.downloadTo(zipFile) { percent, mb, totalMb ->
-            val filled = percent / PROGRESS_STEP_PERCENT
-            val bar = "█".repeat(filled) + "░".repeat(PROGRESS_BAR_SEGMENTS - filled)
-            println("  [$bar] $percent% (%.2f / %.2f MB)".format(mb, totalMb))
+            if (percent != null && totalMb != null) {
+                val filled = percent / PROGRESS_STEP_PERCENT
+                val bar = "█".repeat(filled) + "░".repeat(PROGRESS_BAR_SEGMENTS - filled)
+                println("  [$bar] $percent% (%.2f / %.2f MB)".format(mb, totalMb))
+            } else {
+                println("  Downloading... %.2f MB".format(mb))
+            }
         }
 
         project.copy {
