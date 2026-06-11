@@ -27,9 +27,14 @@ open class DownloadGithubActions : DefaultTask() {
         val tempDir = File(project.rootDir.path + "/.github_tmp/")
         project.downloadRepository(source, tempDir)
 
+        val githubSource = File(tempDir, ".github")
         val destination = File(project.rootDir.path + "/.github/")
-        destination.deleteRecursively()
-        File(tempDir, ".github").renameTo(destination)
+        destination.mkdirs()
+
+        githubSource.listFiles()?.forEach { sourceSubDir ->
+            File(destination, sourceSubDir.name).deleteRecursively()
+            sourceSubDir.renameTo(File(destination, sourceSubDir.name))
+        }
         tempDir.deleteRecursively()
 
         println("  ├$separator")
