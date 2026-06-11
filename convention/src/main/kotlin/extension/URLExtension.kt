@@ -21,7 +21,7 @@ fun URL.downloadTo(destination: File, onProgress: ProgressListener? = null) {
     var downloadedBytes = 0L
     val buffer = ByteArray(BUFFER_SIZE_BYTES)
     var lastPrintedPercent = -1
-    var lastPrintedMb = -1L
+    var lastPrintedMb = 0L
 
     try {
         connection.inputStream.use { input ->
