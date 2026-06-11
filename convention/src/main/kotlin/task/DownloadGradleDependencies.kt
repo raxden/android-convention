@@ -79,7 +79,7 @@ open class DownloadGradleDependencies : DefaultTask() {
 
         private const val PROGRESS_STEP_PERCENT = 5
         private const val PROGRESS_BAR_SEGMENTS = 20
-        private const val SEPARATOR_LENGTH = 65
+        private const val SEPARATOR_LENGTH = 85
 
         fun register(project: Project) {
             project.tasks.register<DownloadGradleDependencies>(TASK_NAME) {
