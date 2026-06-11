@@ -6,7 +6,7 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 open class DownloadGradleDependencies : DefaultTask() {
 
@@ -23,7 +23,7 @@ open class DownloadGradleDependencies : DefaultTask() {
         println("  │  $GIT_CONVENTIONS_SOURCE")
         println("  ├$separator")
 
-        val source = URL(GIT_CONVENTIONS_SOURCE)
+        val source = URI.create(GIT_CONVENTIONS_SOURCE).toURL()
         val destination = File(project.rootDir.path + "/build-logic/")
         val outputDir = project.downloadRepository(source, destination)
 

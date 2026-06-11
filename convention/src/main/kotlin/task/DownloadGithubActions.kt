@@ -6,7 +6,7 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 open class DownloadGithubActions : DefaultTask() {
 
@@ -23,12 +23,17 @@ open class DownloadGithubActions : DefaultTask() {
         println("  │  $GIT_GITHUB_ACTIONS_SOURCE")
         println("  ├$separator")
 
-        val source = URL(GIT_GITHUB_ACTIONS_SOURCE)
+        val source = URI.create(GIT_GITHUB_ACTIONS_SOURCE).toURL()
+        val tempDir = File(project.rootDir.path + "/.github_tmp/")
+        project.downloadRepository(source, tempDir)
+
         val destination = File(project.rootDir.path + "/.github/")
-        val outputDir = project.downloadRepository(source, destination)
+        destination.deleteRecursively()
+        File(tempDir, ".github").renameTo(destination)
+        tempDir.deleteRecursively()
 
         println("  ├$separator")
-        println("  │  Saved to ${outputDir.absolutePath}")
+        println("  │  Saved to ${destination.absolutePath}")
         println("  └$separator")
         println()
     }
