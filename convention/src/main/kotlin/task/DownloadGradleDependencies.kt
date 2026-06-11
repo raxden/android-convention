@@ -17,13 +17,21 @@ open class DownloadGradleDependencies : DefaultTask() {
     }
 
     private fun downloadConventionsRepository() {
-        println("Downloading conventions from $GIT_CONVENTIONS_SOURCE")
+        val separator = "─".repeat(SEPARATOR_LENGTH)
+        println()
+        println("  ┌$separator")
+        println("  │  Downloading Gradle Conventions")
+        println("  │  $GIT_CONVENTIONS_SOURCE")
+        println("  ├$separator")
 
         val source = URL(GIT_CONVENTIONS_SOURCE)
         val destination = File(project.rootDir.path + "/build-logic/")
         val outputDir = downloadRepository(source, destination)
 
-        println("Conventions downloaded to ${outputDir.absolutePath}")
+        println("  ├$separator")
+        println("  │  Saved to ${outputDir.absolutePath}")
+        println("  └$separator")
+        println()
     }
 
     private fun downloadRepository(
@@ -40,9 +48,9 @@ open class DownloadGradleDependencies : DefaultTask() {
             if (percent != null && totalMb != null) {
                 val filled = percent / PROGRESS_STEP_PERCENT
                 val bar = "█".repeat(filled) + "░".repeat(PROGRESS_BAR_SEGMENTS - filled)
-                println("  [$bar] $percent% (%.2f / %.2f MB)".format(mb, totalMb))
+                println("  │  [$bar] $percent% (%.2f / %.2f MB)".format(mb, totalMb))
             } else {
-                println("  Downloading... %.2f MB".format(mb))
+                println("  │  Downloading... %.2f MB".format(mb))
             }
         }
 
@@ -71,6 +79,7 @@ open class DownloadGradleDependencies : DefaultTask() {
 
         private const val PROGRESS_STEP_PERCENT = 5
         private const val PROGRESS_BAR_SEGMENTS = 20
+        private const val SEPARATOR_LENGTH = 65
 
         fun register(project: Project) {
             project.tasks.register<DownloadGradleDependencies>(TASK_NAME) {
