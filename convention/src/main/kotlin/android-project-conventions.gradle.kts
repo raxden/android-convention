@@ -1,5 +1,6 @@
 import extension.getProperty
 import task.DownloadGradleDependencies
+import task.DownloadGithubActions
 
 plugins {
     id("nl.neotech.plugin.rootcoverage")
@@ -77,4 +78,5 @@ subprojects {
 
 tasks {
     DownloadGradleDependencies.register(project)
+    DownloadGithubActions.register(project)
 }

@@ -8,23 +8,23 @@ import org.gradle.kotlin.dsl.register
 import java.io.File
 import java.net.URL
 
-open class DownloadGradleDependencies : DefaultTask() {
+open class DownloadGithubActions : DefaultTask() {
 
     @TaskAction
     fun execute() {
-        downloadConventionsRepository()
+        downloadGithubActionsRepository()
     }
 
-    private fun downloadConventionsRepository() {
+    private fun downloadGithubActionsRepository() {
         val separator = "─".repeat(SEPARATOR_LENGTH)
         println()
         println("  ┌$separator")
-        println("  │  Downloading Gradle Conventions")
-        println("  │  $GIT_CONVENTIONS_SOURCE")
+        println("  │  Downloading Github Actions")
+        println("  │  $GIT_GITHUB_ACTIONS_SOURCE")
         println("  ├$separator")
 
-        val source = URL(GIT_CONVENTIONS_SOURCE)
-        val destination = File(project.rootDir.path + "/build-logic/")
+        val source = URL(GIT_GITHUB_ACTIONS_SOURCE)
+        val destination = File(project.rootDir.path + "/.github/")
         val outputDir = project.downloadRepository(source, destination)
 
         println("  ├$separator")
@@ -35,15 +35,15 @@ open class DownloadGradleDependencies : DefaultTask() {
 
     companion object {
 
-        private const val TASK_NAME = "downloadGradleDependencies"
+        private const val TASK_NAME = "downloadGithubActions"
         private const val GROUP_TASK_NAME = "dependencies"
-        private const val GIT_CONVENTIONS_SOURCE =
-            "https://github.com/raxden/android-convention/archive/refs/heads/master.zip"
+        private const val GIT_GITHUB_ACTIONS_SOURCE =
+            "https://github.com/raxden/android-github-actions/archive/refs/heads/master.zip"
 
         private const val SEPARATOR_LENGTH = 85
 
         fun register(project: Project) {
-            project.tasks.register<DownloadGradleDependencies>(TASK_NAME) {
+            project.tasks.register<DownloadGithubActions>(TASK_NAME) {
                 group = GROUP_TASK_NAME
             }
         }
