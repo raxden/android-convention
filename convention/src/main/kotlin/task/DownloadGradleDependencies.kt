@@ -1,5 +1,6 @@
 package task
 
+import extension.downloadTo
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.file.DuplicatesStrategy
@@ -12,19 +13,17 @@ open class DownloadGradleDependencies : DefaultTask() {
 
     @TaskAction
     fun execute() {
-        println("  Downloading Gradle Dependencies...")
-
         downloadConventionsRepository()
     }
 
     private fun downloadConventionsRepository() {
-        println("  ... downloading 'conventions' files from $GIT_CONVENTIONS_SOURCE...")
+        println("Downloading conventions from $GIT_CONVENTIONS_SOURCE")
 
         val source = URL(GIT_CONVENTIONS_SOURCE)
         val destination = File(project.rootDir.path + "/build-logic/")
         val outputDir = downloadRepository(source, destination)
 
-        println("  ... files downloaded to ${outputDir.absolutePath}!")
+        println("Conventions downloaded to ${outputDir.absolutePath}")
     }
 
     private fun downloadRepository(
@@ -33,11 +32,15 @@ open class DownloadGradleDependencies : DefaultTask() {
     ): File {
         val zipFile = File("${project.rootDir.path}/${repository.path.hashCode()}.zip")
         val outputDir = destination.also {
-            it.mkdirs()
             it.deleteRecursively()
+            it.mkdirs()
         }
 
-        repository.downloadToFile(zipFile)
+        repository.downloadTo(zipFile) { percent, mb, totalMb ->
+            val filled = percent / PROGRESS_STEP_PERCENT
+            val bar = "█".repeat(filled) + "░".repeat(PROGRESS_BAR_SEGMENTS - filled)
+            println("  [$bar] $percent% (%.2f / %.2f MB)".format(mb, totalMb))
+        }
 
         project.copy {
             from(project.zipTree(zipFile))
@@ -55,20 +58,15 @@ open class DownloadGradleDependencies : DefaultTask() {
         return outputDir
     }
 
-    private fun URL.downloadToFile(output: File) {
-        openStream().use { input ->
-            output.outputStream().use { output ->
-                input.copyTo(output)
-            }
-        }
-    }
-
     companion object {
 
         private const val TASK_NAME = "downloadGradleDependencies"
         private const val GROUP_TASK_NAME = "dependencies"
         private const val GIT_CONVENTIONS_SOURCE =
             "https://github.com/raxden/android-convention/archive/refs/heads/master.zip"
+
+        private const val PROGRESS_STEP_PERCENT = 5
+        private const val PROGRESS_BAR_SEGMENTS = 20
 
         fun register(project: Project) {
             project.tasks.register<DownloadGradleDependencies>(TASK_NAME) {
