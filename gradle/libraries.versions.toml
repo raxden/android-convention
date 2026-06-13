@@ -416,10 +416,6 @@ android-project-conventions = { id = "android-project-conventions" }
 # -------------------------------------------------------------------
 # Bundles
 # -------------------------------------------------------------------
-android-material = [
-    "android-material",
-    "timber",
-]
 
 android-compose = [
     "androidx-core-ktx",
