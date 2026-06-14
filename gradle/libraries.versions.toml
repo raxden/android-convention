@@ -312,6 +312,7 @@ commons-bom = { module = "com.raxdenstudios:commons-bom", version.ref = "commons
 commons-android = { module = "com.raxdenstudios:commons-android" }
 commons-android-binding = { module = "com.raxdenstudios:commons-android-binding" }
 commons-android-compose = { module = "com.raxdenstudios:commons-android-compose" }
+commons-android-room = { module = "com.raxdenstudios:commons-android-room" }
 commons-android-test = { module = "com.raxdenstudios:commons-android-test" }
 commons-core = { module = "com.raxdenstudios:commons-core" }
 commons-coroutines = { module = "com.raxdenstudios:commons-coroutines" }
