@@ -341,7 +341,7 @@ platform-network = { module = "com.raxdenstudios:platform-network" }
 # RaxdenStudios - Android component libs
 # -------------------------------------------------------------------
 
-component-bom = { module = "com.raxdenstudios:platform-bom", version.ref = "component-bom" }
+component-bom = { module = "com.raxdenstudios:component-bom", version.ref = "component-bom" }
 component-rating = { module = "com.raxdenstudios:component-rating" }
 component-permission = { module = "com.raxdenstudios:component-permission" }
 
