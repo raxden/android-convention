@@ -45,6 +45,9 @@ open class DownloadGradleDependencies : DefaultTask() {
         val destination = File(project.rootDir.path + "/gradle/libs.versions.toml")
         source.copyTo(destination, overwrite = true)
         println("  │  Synced libs.versions.toml → ${destination.absolutePath}")
+
+        File(buildLogicDir, "gradle").deleteRecursively()
+        println("  │  Removed ${buildLogicDir.absolutePath}/gradle")
     }
 
     companion object {
