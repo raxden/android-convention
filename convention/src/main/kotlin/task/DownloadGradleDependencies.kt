@@ -25,7 +25,11 @@ open class DownloadGradleDependencies : DefaultTask() {
 
         val source = URI.create(GIT_CONVENTIONS_SOURCE).toURL()
         val destination = File(project.rootDir.path + "/build-logic/")
-        val outputDir = project.downloadRepository(source, destination)
+        val outputDir = project.downloadRepository(
+            repository = source,
+            destination = destination,
+            excludes = listOf("**/.github/**")
+        )
 
         println("  ├$separator")
         println("  │  Saved to ${outputDir.absolutePath}")
