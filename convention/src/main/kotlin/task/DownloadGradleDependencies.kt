@@ -48,6 +48,9 @@ open class DownloadGradleDependencies : DefaultTask() {
 
         File(buildLogicDir, "gradle").deleteRecursively()
         println("  │  Removed ${buildLogicDir.absolutePath}/gradle")
+
+        File(buildLogicDir, "gradle.properties").delete()
+        println("  │  Removed ${buildLogicDir.absolutePath}/gradle.properties")
     }
 
     companion object {
