@@ -1,0 +1,69 @@
+name: Update Dependencies
+
+on:
+  repository_dispatch:
+    types:
+      - update-commons-bom
+      - update-platform-bom
+      - update-component-bom
+
+permissions:
+  contents: write
+
+jobs:
+
+  update-dependencies:
+    name: Update ${{ github.event.action }} to ${{ github.event.client_payload.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          persist-credentials: true
+
+      - name: Resolve version key and new version
+        id: resolve
+        shell: bash
+        run: |
+          case "${{ github.event.action }}" in
+            update-commons-bom)   key="commons-bom" ;;
+            update-platform-bom)  key="platform-bom" ;;
+            update-component-bom) key="component-bom" ;;
+            *) echo "Unknown event type: ${{ github.event.action }}"; exit 1 ;;
+          esac
+
+          version="${{ github.event.client_payload.version }}"
+
+          echo "key=$key" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Updating $key to $version"
+
+      - name: Update version in libraries.versions.toml
+        shell: bash
+        run: |
+          key="${{ steps.resolve.outputs.key }}"
+          version="${{ steps.resolve.outputs.version }}"
+          file="gradle/libraries.versions.toml"
+
+          sed -i "s/^${key} = \".*\"/${key} = \"${version}\"/" "$file"
+
+          echo "Result:"
+          grep "^${key} = " "$file"
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "${{ vars.CI_GIT_USER_NAME }}"
+          git config user.email "${{ vars.CI_GIT_USER_EMAIL }}"
+
+          git add gradle/libraries.versions.toml
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update ${{ steps.resolve.outputs.key }} to ${{ steps.resolve.outputs.version }}"
+            git push origin ${{ github.ref_name }}
+          fi
