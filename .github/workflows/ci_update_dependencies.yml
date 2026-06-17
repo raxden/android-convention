@@ -41,12 +41,12 @@ jobs:
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "Updating $key to $version"
 
-      - name: Update version in libraries.versions.toml
+      - name: Update version in libs.versions.toml
         shell: bash
         run: |
           key="${{ steps.resolve.outputs.key }}"
           version="${{ steps.resolve.outputs.version }}"
-          file="gradle/libraries.versions.toml"
+          file="gradle/libs.versions.toml"
 
           sed -i "s/^${key} = \".*\"/${key} = \"${version}\"/" "$file"
 
@@ -59,7 +59,7 @@ jobs:
           git config user.name "${{ vars.CI_GIT_USER_NAME }}"
           git config user.email "${{ vars.CI_GIT_USER_EMAIL }}"
 
-          git add gradle/libraries.versions.toml
+          git add gradle/libs.versions.toml
 
           if git diff --cached --quiet; then
             echo "No changes to commit"

@@ -31,10 +31,20 @@ open class DownloadGradleDependencies : DefaultTask() {
             excludes = listOf("**/.github/**")
         )
 
+        syncVersionCatalog(outputDir)
+
         println("  ├$separator")
         println("  │  Saved to ${outputDir.absolutePath}")
         println("  └$separator")
         println()
+    }
+
+    private fun syncVersionCatalog(buildLogicDir: File) {
+        val source = File(buildLogicDir, "gradle/libs.versions.toml")
+        if (!source.exists()) return
+        val destination = File(project.rootDir.path + "/gradle/libs.versions.toml")
+        source.copyTo(destination, overwrite = true)
+        println("  │  Synced libs.versions.toml → ${destination.absolutePath}")
     }
 
     companion object {

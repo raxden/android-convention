@@ -43,7 +43,7 @@ Convention plugins avoid duplicated build script setup and messy `subprojects` b
 | **Gradle** | 8.x+ (uses `includeBuild` / composite builds) |
 | **AGP / Kotlin** | Provided by the host project's version catalog |
 
-> All SDK, JDK and toolchain versions are read from the host project's `gradle/libraries.versions.toml`. See [`model/Versions.kt`](convention/src/main/kotlin/model/Versions.kt) for the keys consumed by the plugins.
+> All SDK, JDK and toolchain versions are read from the host project's `gradle/libs.versions.toml`. See [`model/Versions.kt`](convention/src/main/kotlin/model/Versions.kt) for the keys consumed by the plugins.
 
 ## Structure
 
@@ -111,13 +111,13 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from(files("./gradle/libraries.versions.toml"))
+            from(files("./gradle/libs.versions.toml"))
         }
     }
 }
 ```
 
-> `build-logic/settings.gradle.kts` resolves the version catalog automatically: it first looks for `../gradle/libraries.versions.toml` (i.e. the host project's catalog), and falls back to its own `gradle/libraries.versions.toml`. This means **the host project's `gradle/` catalog is the source of truth** and `build-logic` picks it up without any extra configuration.
+> `build-logic/settings.gradle.kts` resolves the version catalog automatically: it first looks for `../gradle/libs.versions.toml` (i.e. the host project's catalog), and falls back to its own `gradle/libs.versions.toml`. This means **the host project's `gradle/` catalog is the source of truth** and `build-logic` picks it up without any extra configuration.
 
 ### 3. Apply `android-project-conventions` in the root `build.gradle.kts`
 
