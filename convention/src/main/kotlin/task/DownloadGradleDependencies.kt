@@ -40,11 +40,11 @@ open class DownloadGradleDependencies : DefaultTask() {
     }
 
     private fun syncVersionCatalog(buildLogicDir: File) {
-        val source = File(buildLogicDir, "gradle/libs.versions.toml")
+        val source = File(buildLogicDir, "gradle/libraries.versions.toml")
         if (!source.exists()) return
-        val destination = File(project.rootDir.path + "/gradle/libs.versions.toml")
+        val destination = File(project.rootDir.path + "/gradle/libraries.versions.toml")
         source.copyTo(destination, overwrite = true)
-        println("  │  Synced libs.versions.toml → ${destination.absolutePath}")
+        println("  │  Synced libraries.versions.toml → ${destination.absolutePath}")
 
         File(buildLogicDir, "gradle").deleteRecursively()
         println("  │  Removed ${buildLogicDir.absolutePath}/gradle")
