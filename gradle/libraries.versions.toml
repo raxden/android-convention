@@ -104,7 +104,7 @@ compose-charts = "0.0.13"
 # Debug / QA / Analysis
 # -------------------------------------------------------------------
 leakcanary = "2.14"
-detekt = "2.0.0-alpha.2"
+detekt = "2.0.0-alpha.6"
 rootcoverage = "1.12.0"
 test-logger = "4.0.0"
 benManes = "0.53.0"

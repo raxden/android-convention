@@ -5,7 +5,7 @@ import task.DownloadGithubActions
 
 plugins {
     id("nl.neotech.plugin.rootcoverage")
-//    id("dev.detekt")
+    id("dev.detekt")
 }
 
 // Detekt info ->
@@ -14,16 +14,16 @@ plugins {
 // ./gradlew detektBaseline       - Similar to detekt, but creates a code smell baseline. Further detekt runs will
 //                                      only feature new smells not in this list.
 // More info -> https://detekt.dev/docs/gettingstarted/gradle/
-//detekt {
-//    // version found will be used. Override to stay on the same version.
-//    config = files("/config/detekt/detekt.yml")
-//    // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects.
-//    parallel = true
-//    // Android: Don't create tasks for the specified build types (e.g. "release")
-//    ignoredBuildTypes = listOf("release")
-//    // Specify the base path for file paths in the formatted reports.
-//    basePath = rootProject.projectDir.toString()
-//}
+detekt {
+    // version found will be used. Override to stay on the same version.
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects.
+    parallel = true
+    // Android: Don't create tasks for the specified build types (e.g. "release")
+    ignoredBuildTypes = listOf("release")
+    // Specify the base path for file paths in the formatted reports.
+    basePath.set(rootProject.layout.projectDirectory)
+}
 
 rootCoverage {
     // The default build variant for every module
@@ -66,7 +66,7 @@ rootCoverage {
 }
 
 subprojects {
-//    apply(plugin = "dev.detekt")
+    apply(plugin = "dev.detekt")
     // https://docs.gradle.org/current/userguide/project_report_plugin.html#sec:project_reports_tasks
     apply(plugin = "project-report")
 
