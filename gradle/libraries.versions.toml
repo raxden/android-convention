@@ -4,7 +4,7 @@
 # Toolchain / SDK
 # -------------------------------------------------------------------
 jdk = "17"
-minSdk = "27"
+minSdk = "28"
 targetSdk = "36"
 compileSdk = "36"
 sourceCompatibility = "17"
