@@ -22,6 +22,7 @@ ksp = "2.3.6"
 # AndroidX
 # -------------------------------------------------------------------
 androidx-core-ktx = "1.18.0"
+androidx-core-splashscreen = "1.2.0"
 androidx-activity-ktx = "1.13.0"
 androidx-fragment-ktx = "1.8.9"
 androidx-preference-ktx = "1.2.1"
@@ -142,6 +143,7 @@ junit-jupiter = "5.10.0"
 # AndroidX - Core
 # -------------------------------------------------------------------
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-ktx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment-ktx" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidx-preference-ktx" }
