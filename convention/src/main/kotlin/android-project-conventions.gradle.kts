@@ -32,18 +32,24 @@ rootCoverage {
     // The default build variant for every module
     buildVariant = getProperty("buildType", "debug")
 
-    // Class & package exclude patterns
+    // Class & package exclude patterns (Ant-style, matched against compiled class file paths)
     excludes = listOf(
-        "**/di/*",
-        "**/BuildConfig*",
-        "**/databinding/*",
-        "**/*_*.class",
+        // Android generated resources and build config
+        "**/R.class",
+        "**/R\$*.class",
+        "**/BuildConfig.*",
+        // Compose compiler lambdas and kotlinx.serialization generated serializers
+        "**/*ComposableSingletons*",
+        "**/*\$\$serializer*",
+        // Compose @Preview code
+        "**/preview/**",
+        // Koin modules / DI wiring
+        "**/di/**",
+        // Room generated DAO and database implementations
         "**/*_Impl*.class",
+        // Application and Activity entry points
         "**/App.class",
         "**/*Activity.*",
-        "**/*Fragment.*",
-        "**/*Adapter.*",
-        "**/*.compose.*",
     )
 
     // Since 1.1 generateHtml is by default true
@@ -72,6 +78,16 @@ subprojects {
     apply(plugin = "dev.detekt")
     // https://docs.gradle.org/current/userguide/project_report_plugin.html#sec:project_reports_tasks
     apply(plugin = "project-report")
+
+    // coverageReport reads the unit test execution data from build/ without depending on the
+    // test tasks (executeUnitTests = false lets CI run it on downloaded test outputs). Declare the
+    // ordering so `./gradlew testDebugUnitTest coverageReport` works in a single invocation.
+    tasks.matching { it.name == "coverageReport" }.configureEach {
+        mustRunAfter(tasks.withType<Test>())
+    }
+    rootProject.tasks.matching { it.name == "rootCodeCoverageReport" }.configureEach {
+        mustRunAfter(tasks.withType<Test>())
+    }
 
     afterEvaluate {
         dependencies {
