@@ -136,7 +136,7 @@ android-publish-platform = "0.57.30"
 
 commons-bom = "1.5.6"
 platform-bom = "1.1.1"
-component-bom = "1.1.0"
+component-bom = "1.1.1"
 junit-jupiter = "5.10.0"
 
 [libraries]
