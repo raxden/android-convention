@@ -32,7 +32,6 @@ android {
 
             // Tests configuration
             enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
         }
     }
 
@@ -47,10 +46,4 @@ android {
 
 kotlin {
     jvmToolchain(jdkVersion = libs.versions.jdk.asInt())
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.asInt()))
-    }
 }
