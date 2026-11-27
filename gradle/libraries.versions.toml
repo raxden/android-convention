@@ -104,6 +104,9 @@ coil = "2.7.0"
 glide = "4.13.2"
 landscapist = "2.9.5"
 compose-charts = "0.0.13"
+# Pinned to 4.0.x: 5.x pulls Compose 1.12, material3 1.12-alpha and kotlin-stdlib 2.4;
+# 4.1.x pulls material3 1.5.0-alpha. 4.0.5 resolves under Compose BOM 2026.03.00.
+material-kolor = "4.0.5"
 
 # -------------------------------------------------------------------
 # Debug / QA / Analysis
@@ -218,6 +221,8 @@ landscapist-animation = { module = "com.github.skydoves:landscapist-animation", 
 landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
 
 compose-charts = { module = "io.github.ehsannarmani:compose-charts", version.ref = "compose-charts" }
+
+material-kolor = { module = "com.materialkolor:material-kolor", version.ref = "material-kolor" }
 
 # -------------------------------------------------------------------
 # Firebase (use BOM)
