@@ -104,6 +104,7 @@ coil = "2.7.0"
 glide = "4.13.2"
 landscapist = "2.9.5"
 compose-charts = "0.0.13"
+reorderable = "3.1.0"
 # Pinned to 4.0.x: 5.x pulls Compose 1.12, material3 1.12-alpha and kotlin-stdlib 2.4;
 # 4.1.x pulls material3 1.5.0-alpha. 4.0.5 resolves under Compose BOM 2026.03.00.
 material-kolor = "4.0.5"
@@ -221,6 +222,8 @@ landscapist-animation = { module = "com.github.skydoves:landscapist-animation", 
 landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
 
 compose-charts = { module = "io.github.ehsannarmani:compose-charts", version.ref = "compose-charts" }
+
+reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 
 material-kolor = { module = "com.materialkolor:material-kolor", version.ref = "material-kolor" }
 
@@ -355,6 +358,8 @@ platform-ui = { module = "com.raxdenstudios:platform-ui" }
 platform-device = { module = "com.raxdenstudios:platform-device" }
 platform-engagement = { module = "com.raxdenstudios:platform-engagement" }
 platform-network = { module = "com.raxdenstudios:platform-network" }
+platform-featureflag = { module = "com.raxdenstudios:platform-featureflag" }
+platform-notification = { module = "com.raxdenstudios:platform-notification" }
 
 # -------------------------------------------------------------------
 # RaxdenStudios - Android component libs
